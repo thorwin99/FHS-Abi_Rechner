@@ -1,18 +1,16 @@
 <?php
-    global $_EAFGEDE;
-    global $_PFGESDE;
-    global $_NAGES;
+    global $EAFGEDE;
+    global $PFGESDE;
+    global $NAGES;
     
-    loadEAs();
+    loadEAs($EAFGEDE);
 
     
-    function loadEAs(array $_EAFGEDE){
-        foreach($_EAFGEDE as $Subject){
-            echo getHTMLObject("input", array("name" => "easubj", "value" => $Subject, "type" => "hidden"));
+    function loadEAs(array $EAFGEDE){
+        foreach($EAFGEDE as $Subject){
+            echo getHTMLObject("input", array("name" => "easubj", "value" => $Subject, "type" => "hidden"), "");
         }
-        
-        
     }
-    
+    function loadPFs(array $_)
     
 ?>
