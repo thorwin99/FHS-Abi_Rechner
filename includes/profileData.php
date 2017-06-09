@@ -29,12 +29,12 @@
     $EAFWLDE = array($_SUBJ['Wl'], $_SUBJ['De']);//Prüfungsfächer Wirtschaft Deutsch / e.A. Fächer
     $EAFWLEN = array($_SUBJ['Wl'], $_SUBJ['Eng']);//Prüfungsfächer Wirtschaft Englisch / e.A. Fächer
 
-    $PFGESDE = array($_SUBJ['Ma'], "Lang" => $LANGUAGES);//Pflichtfächer Gesundheit Deutsch
+    $PFGESDE = array($_SUBJ['Ma'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Gesundheit Deutsch
     $PFGESEN = array($_SUBJ['Ma'], $_SUBJ['De']);//Pflichtfächer Gesundheit Englisch
-    $PFTE = array($_SUBJ['De'], "Lang" => $LANGUAGES);//Pflichtfächer Technik
-    $PFER = array($_SUBJ['Ma'], "Lang" => $LANGUAGES);//Pflichtfächer Ernährung
-    $PFWLDE = array($_SUBJ['Ma'], "Lang" => $LANGUAGES);//Pflichtfächer Wirtschaft Deutsch
-    $PFELEN = array($_SUBJ['Ma'], "Lang" => $_SUBJ['De']);//Pflichtfächer Wirtschaft Englisch
+    $PFTE = array($_SUBJ['De'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Technik
+    $PFER = array($_SUBJ['Ma'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Ernährung
+    $PFWLDE = array($_SUBJ['Ma'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Wirtschaft Deutsch
+    $PFELEN = array($_SUBJ['Ma'], "Fremdsprache" => $_SUBJ['De']);//Pflichtfächer Wirtschaft Englisch
 
     $NAGES = array($_SUBJ['Bio']);//Naturwissenschaften Gesundheit
     $NATE = array($_SUBJ['Che'], $_SUBJ['Phy']);//Naturwissenschaften Technik

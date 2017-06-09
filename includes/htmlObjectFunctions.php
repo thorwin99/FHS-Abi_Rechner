@@ -12,12 +12,12 @@
     function getAttribute($name, $value){
         return $name . "=\"" . $value . "\"";
     }
-    function getDropdownList($name, array &$attributes, array $options){
+    function getDropdownList($name, array $attributes, array $options){
         $attributes["name"] = $name;
-        $options = "";
-        foreach($list as $key => $value){
-            $options = $options . getHTMLObject("option", array("value" => $key), $value);
+        $optionsString = "";
+        foreach($options as $key => $value){
+            $optionsString = $optionsString . getHTMLObject("option", array("value" => $key), $value);
         }
-        return getHTMLObject("select", $attributes, $options);
+        return getHTMLObject("select", $attributes, $optionsString);
     }
 ?>
