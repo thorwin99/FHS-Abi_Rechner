@@ -1,0 +1,24 @@
+body{
+	background: lightgoldenrodyellow;
+	font-family: monospace, arial;
+}
+
+#settingBar{
+	width: 100%;
+	background: lightgray;
+	margin: 0px;
+	padding: 10px;
+}
+#settingsTitle{
+	
+	margin: 0px;
+	
+}
+td input{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+select{
+    display: block;
+}
