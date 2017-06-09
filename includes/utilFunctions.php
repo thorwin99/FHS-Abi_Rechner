@@ -1,4 +1,5 @@
 <?php
+    //DELETE THIS FILE LATER
     function writeTable($TableContent, $id = NULL, $class = NULL){
         $_id = ($id != NULL) ? getAttribute("id", $id) : "";
         $_class = ($class != null) ? getAttribute("class", $class) : "";

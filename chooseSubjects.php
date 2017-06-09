@@ -2,7 +2,6 @@
 	<head>
 		<title>
 			<?php
-			require 'includes/utilFunctions.php';
 			if(!isset($_POST['absch'])){
 				redirect("index.html");
 			}
