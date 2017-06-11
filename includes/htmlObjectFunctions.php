@@ -16,8 +16,13 @@
         $attributes["name"] = $name;
         $optionsString = "";
         foreach($options as $key => $value){
-            $optionsString = $optionsString . getHTMLObject("option", array("value" => $key), $value);
+            $optionsString = $optionsString . getHTMLObject("option", array("value" => $value), $value);
         }
         return getHTMLObject("select", $attributes, $optionsString);
+    }
+    function redirect($url){
+        
+        header("Location: " . $url);
+        
     }
 ?>

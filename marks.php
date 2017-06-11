@@ -2,7 +2,7 @@
 	<head>
 		<title>
 			<?php
-            require 'includes/utilFunctions.php';
+            require 'includes/htmlObjectFunctions.php';
 			if(!isset($_POST['absch'])){
 				redirect("index.html");
 			}
@@ -17,16 +17,15 @@
 	</head>
 	<body>
 		<!--Includes settings menu-->
-		<?php include 'includes/settingsBar.php';?>
+		<?php// include 'includes/settingsBar.php';?>
 		<h1>Noteneingabe</h1>
-		<!--TODO: Add Abi calc -->
 		<form id="marksForm" action="result.php" method="post">
 			<!--Table with mark fields-->
             <?php
-                require_once 'includes/profilesData.php';
+                require_once 'includes/profileData.php';
                 switch($_POST['absch']){  
                     case "Abitur":
-                        include 'includes/tabFHS.php';
+                        include 'includes/tabAbi.php';
                         break;
                     case "Fachhochschule":
                         include 'includes/tabFHS.php';
