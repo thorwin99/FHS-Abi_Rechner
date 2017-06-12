@@ -39,8 +39,8 @@
 
     $FGESDE = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Gesundheit Deutsch
     $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Gesundheit Deutsch
-    $FTE = array($_SUBJ['Bin'], $_SUBJ['Phy'], $_SUBJ['Che'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Technik
-    $FER = array($_SUBJ['Wl'], $_SUBJ['Che'], $_SUBJ['Bio'], $_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Ernährung
+    $FTE = array($_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));//Wahlfächer Technik
+    $FER = array($_SUBJ['Wl'], $_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio']));//Wahlfächer Ernährung
     $FWLDE = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Wirtschaft Deutsch
     $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Wirtschaft Englisch
 ?>

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="style/webStyle.css">
 		<!-- load jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="script/newSubjects.js"></script>
+        <script src="script/Subjects.js"></script>
 	</head>
 	<body>
 		<h1 id="order">Wähle deine Fächer</h1>

@@ -1,83 +1,85 @@
+var FSubjectCountSum = 0;
 $(document).ready(isReady);
 function isReady(){
-	//Submit form
-	$("#form").submit(function(event){//Submit event des Forms. Kontrolliert mögliche fehler.
-        var sum = 0;
-        $(".markCountInput").each(function(){
-            var value = $(this).val();
-            sum += Number(value);
-        });
-        if(sum != 3){
-            alert("Du musst 3 Fächer auswählen");
-            event.preventDefault();
-        }
-        
-        var subjDe = $("#Deutsch");
-        var secEMark = $(".secemark").attr("value");
-        if(secEMark == "Deutsch"){
-            subjDe.remove();
-        }
-        
-         $(".markCountInput").each(function(){
-            var value = $(this).val();
-            var id = $(this).attr("name").replace("Count", "");
-            var itemClass = "." + id;
-            if($(itemClass).length == 0){
-                if(Number(value) > 0){
-                    $('<input>').attr({
-                        type: "hidden",
-                        class: id,
-                        value: id,
-                        name: "wsubjs[]"
-                    }).appendTo("#form");
-                }
-            }
-        });
-        
-	});
-    
-    $(".secemark").click(function(){//Klick funktion der Radio buttons des 2. Hauptfaches.
-        var field = $(this).attr("value");//Das aktuell ausgewählte 2. Hauptfach
-        switch(field){
-            case "Deutsch"://Wenn Deutsch ausgewählt wird, dann soll Englisch als 2. Fremdsprache wieder auswählbar sein.
-                $("#lang").find("option[value='Englisch']").show();
-                break;
-            case "Englisch"://Wenn Englisch ausgewählt wird, wird es bei der 2. Fremdsprache entfernt.
-                $("#lang").find("option[value='Englisch']").hide();
-                $("#lang").find("option[value='Spanisch']").attr("selected", "selected");
-                break;
-            default:
-                break;
+    onChangeFremdsprachFach();
+    onChangeNawiFach();
+    $("form").submit(formSubmit);
+    $(".CountField").change(onChangeCountNumber);
+    $(".Fremdsprache[id=FPF]").change(onChangeFremdsprachFach);
+    $(".Naturwissenschaft[id=FPF]").change(onChangeNawiFach);
+}
+function formSubmit(event){
+    var nullSubjects = [];
+    var Subjects = [];
+    var sumOfSubjects = 0;
+    $(".CountField").each(function(){
+        var value = Number($(this).val());
+        sumOfSubjects += value;
+        if(value == 0){
+            nullSubjects.push($(this).parent().parent());
+        }else{
+            Subjects.push($(this).parent().parent());
         }
     });
-
-    $(".markCountInput").change(function(){
-        var val = $(this).val();
-        var supName = $(this).attr("name");
-        var sum = 0;
-        $(".markCountInput").each(function(){
-            var value = $(this).val();
-            sum += Number(value);
-        });
-        $(".markCountInput").each(function(){
-            var value = $(this).val();
-            var name = $(this).attr("name");
-            var max = 2;
-            if(sum >= 2){
-                max = 3-sum;
-            }
-            if(name != supName){
-                if(!(value > max)){
-                    $(this).attr("max", max);
-                }
-            }
+    if(sumOfSubjects != 3){//Kann nicht absenden.
+        alert("Du musst 3 Fächer auswählen!");
+        event.preventDefault();
+    }else{//Kann absenden
+        for(i = 0; i < nullSubjects.length; i++){//Entferne alle Fächer mit 0 Noten eingebracht.
+            nullSubjects[i].remove();
+        }
+        for(i = 0; i < Subjects.length; i++){
+            Subjects[i].find("td[class=subjectLabel]").html();
             
-        });
+        }
+    }
+    
+}
+function onChangeCountNumber(event){
+    var newValue = Number($(this).val());
+    FSubjectCountSum = getSubjectCountSum();
+    var max = (FSubjectCountSum >= 2) ? 3-FSubjectCountSum : 2;
+    $(".CountField").each(function(){
+        var currentFieldValue = Number($(this).val());
+        if(!(currentFieldValue > max)){
+            $(this).attr("max", max);
+        }
         
     });
-
-    $("#DropFach0").change(function(){
-        var value = $(this).find(":selected").attr("value");
-        $("#inputFach0").attr("name", value + "Count");
+}
+function onChangeFremdsprachFach(event){
+    if(!$(".Fremdsprache[id=FPF]").length)return;
+    var value = $(".Fremdsprache[id=FPF]").val();
+    if(value == "Englisch"){
+        $(".Fremdsprache").not("#FPF").find("option[value=Englisch]").hide().removeAttr('selected');
+        $(".Fremdsprache").not("#FPF").find("option[value!=Englisch]").show().removeAttr('selected').attr('selected','selected');
+    }else{
+        $(".Fremdsprache").not("#FPF").find("option[value!=Englisch]").hide().removeAttr('selected');
+        $(".Fremdsprache").not("#FPF").find("option[value=Englisch]").show().removeAttr('selected').attr('selected','selected');
+    }
+}
+function onChangeNawiFach(event){
+    if(!$(".Naturwissenschaft[id=FPF]").length)return;
+    var value = $(".Naturwissenschaft[id=FPF]").val();
+    $(".Naturwissenschaft").not(".Naturwissenschaft[id=FPF]").find("option[value=" + value + "]").hide().removeAttr('selected');
+    $(".Naturwissenschaft").not(".Naturwissenschaft[id=FPF]").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected');
+}
+function getSubjectCountSum(){
+    var sumOfSubjects = 0;
+    $(".CountField").each(function(){
+        var value = Number($(this).val());
+        sumOfSubjects += value;
     });
+    return sumOfSubjects;
+}
+function checkDoubles(){
+    
+    var classFs = $(".Fremdsprache");
+    if(classFs[0].val() == classFS[1].val()){
+        return true;
+    }
+    var classFsNawi = $(".Naturwissenschaft");
+    if(classNawi[0].val() == classNawi[1].val()){
+        return true;
+    }
 }

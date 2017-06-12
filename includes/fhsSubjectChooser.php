@@ -24,4 +24,5 @@
                 include_once 'includes/Profiles/TE.php';
             break;
     }
+    loadFHSSubjectChooser();//Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
 ?>

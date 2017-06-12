@@ -3,10 +3,11 @@
     global $PFGESDE;
     global $FGESDE;
     
-    loadEAs($EAFGEDE);
-    loadPFs($PFGESDE);
-    loadWFs($FGESDE);
-
+    function loadFHSSubjectChooser(){
+        loadEAs($EAFGEDE);
+        loadPFs($PFGESDE);
+        loadWFs($FGESDE);
+    }
     function loadEAs(array $EAF){
         foreach($EAF as $Subject){
             echo getHTMLObject("input", array("name" => "easubj[]", "value" => $Subject, "type" => "hidden"), "");
@@ -28,14 +29,15 @@
         
         foreach($WF as $key => $Subject){
             if(gettype($Subject) == "array"){
-                $Dropdown = getDropdownList("psubj[]", array("class" => $key), $Subject);
-                $TLabel = getHTMLObject("td", array(), $Dropdown);
-                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 1.0, "class" => "CountField", "value" => 0), "");
+                $Dropdown = getDropdownList("subj[]", array("class" => $key), $Subject);
+                $TLabel = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 1.0, "class" => "CountField", "value" => 0, "name" => "subjCount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
                 $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
             }else{
-                $TLabel = getHTMLObject("td", array(), $Subject);
-                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 1.0, "class" => "CountField", "value" => 0), "");
+                $THiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $Subject), "");
+                $TLabel = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $THiddenLabel);
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 1.0, "class" => "CountField", "value" => 0, "name" => "subjCount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
                 $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
             }
