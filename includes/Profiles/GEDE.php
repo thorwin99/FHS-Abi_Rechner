@@ -1,9 +1,8 @@
 <?php
-    global $EAFGEDE;
-    global $PFGESDE;
-    global $FGESDE;
-    
     function loadFHSSubjectChooser(){
+        global $EAFGEDE;
+        global $PFGESDE;
+        global $FGESDE;
         loadEAs($EAFGEDE);
         loadPFs($PFGESDE);
         loadWFs($FGESDE);

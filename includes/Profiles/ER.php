@@ -1,11 +1,8 @@
 <?php
-
-?><?php
-    global $EAFER;
-    global $PFER;
-    global $FER;
-    
     function loadFHSSubjectChooser(){
+        global $EAFER;
+        global $PFER;
+        global $FER;
         loadEAs($EAFER);
         loadPFs($PFER);
         loadWFs($FER);
