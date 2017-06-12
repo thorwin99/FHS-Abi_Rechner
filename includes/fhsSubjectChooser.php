@@ -7,21 +7,21 @@
             if($_POST['language'] == "DE"){
                 include_once 'includes/Profiles/GEDE.php';
             }else{
-                include_once 'includes/Profiles/GEDE.php';
+                include_once 'includes/Profiles/GEEN.php';
             }
             break;
         case "ER":
-                include_once 'includes/Profiles/GEDE.php';
+                include_once 'includes/Profiles/ER.php';
             break;
         case "WL":
             if($_POST['languag'] == "DE"){
-                include_once 'includes/Profiles/GEDE.php';
+                include_once 'includes/Profiles/WLDE.php';
             }else{
-                include_once 'includes/Profiles/GEDE.php';
+                include_once 'includes/Profiles/WLEN.php';
             }
             break;
         case "TE":
-                include_once 'includes/Profiles/GEDE.php';
+                include_once 'includes/Profiles/TE.php';
             break;
     }
 ?>

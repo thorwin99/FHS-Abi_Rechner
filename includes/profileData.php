@@ -21,6 +21,7 @@
                     "Dsp" => "Darstellendes Spiel");
 
     $LANGUAGES = array($_SUBJ['Fr'], $_SUBJ['Eng'], $_SUBJ['Spa']);
+    $RELPHI = array($_SUBJ['Re'], $_SUBJ['Phi']);
 
     $EAFGEDE = array($_SUBJ['Ge'], $_SUBJ['De']);//Prüfungsfächer Gesundheit Deutsch / e.A. Fächer
     $EAFGEEN = array($_SUBJ['Ge'], $_SUBJ['Eng']);//Prüfungsfächer Gesundheit Englisch / e.A. Fächer
@@ -29,21 +30,17 @@
     $EAFWLDE = array($_SUBJ['Wl'], $_SUBJ['De']);//Prüfungsfächer Wirtschaft Deutsch / e.A. Fächer
     $EAFWLEN = array($_SUBJ['Wl'], $_SUBJ['Eng']);//Prüfungsfächer Wirtschaft Englisch / e.A. Fächer
 
-    $PFGESDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Gesundheit Deutsch
-    $PFGESEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['De']);//Pflichtfächer Gesundheit Englisch
-    $PFTE = array($_SUBJ['De'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Technik
-    $PFER = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Ernährung
-    $PFWLDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Wirtschaft Deutsch
-    $PFELEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => $_SUBJ['De']);//Pflichtfächer Wirtschaft Englisch
+    $PFGESDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Bio'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Gesundheit Deutsch
+    $PFGESEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['De'], $_SUBJ['Bio'],);//Pflichtfächer Gesundheit Englisch
+    $PFTE = array($_SUBJ['De'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));//Pflichtfächer Technik
+    $PFER = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => $LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio']));//Pflichtfächer Ernährung
+    $PFWLDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'], "Fremdsprache" => $LANGUAGES);//Pflichtfächer Wirtschaft Deutsch
+    $PFELEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'],"Fremdsprache" => $_SUBJ['De']);//Pflichtfächer Wirtschaft Englisch
 
-    $NAGES = array($_SUBJ['Bio']);//Naturwissenschaften Gesundheit
-    $NATE = array($_SUBJ['Che'], $_SUBJ['Phy']);//Naturwissenschaften Technik
-    $NAER = array($_SUBJ['Che'], $_SUBJ['Bio']);//Naturwissenschaften Ernährung
-    $NAWL = array($_SUBJ['Phy']);//Naturwissenschaften Wirtschaft
-
-    $FGES = array();//Wahlfächer Gesundheit
-    $FTE = array();//Wahlfächer Technik
-    $FER = array();//Wahlfächer Ernährung
-    $FWLDE = array();//Wahlfächer Wirtschaft Deutsch
-    $FWLEN = array();//Wahlfächer Wirtschaft Englisch
+    $FGESDE = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Gesundheit Deutsch
+    $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Gesundheit Deutsch
+    $FTE = array($_SUBJ['Bin'], $_SUBJ['Phy'], $_SUBJ['Che'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Technik
+    $FER = array($_SUBJ['Wl'], $_SUBJ['Che'], $_SUBJ['Bio'], $_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Ernährung
+    $FWLDE = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Wirtschaft Deutsch
+    $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);//Wahlfächer Wirtschaft Englisch
 ?>
