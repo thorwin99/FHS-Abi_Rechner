@@ -1,7 +1,7 @@
 <?php
     require_once 'includes/htmlObjectFunctions.php';
     $table = "";
-    
+    echo "Hallo";
     addEAMarks($table);
     addPSubjectMarks($table);
     

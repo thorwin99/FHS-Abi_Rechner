@@ -40,4 +40,10 @@
     $NATE = array($_SUBJ['Che'], $_SUBJ['Phy']);//Naturwissenschaften Technik
     $NAER = array($_SUBJ['Che'], $_SUBJ['Bio']);//Naturwissenschaften Ernährung
     $NAWL = array($_SUBJ['Phy']);//Naturwissenschaften Wirtschaft
+
+    $FGES = array();//Wahlfächer Gesundheit
+    $FTE = array();//Wahlfächer Technik
+    $FER = array();//Wahlfächer Ernährung
+    $FWLDE = array();//Wahlfächer Wirtschaft Deutsch
+    $FWLEN = array();//Wahlfächer Wirtschaft Englisch
 ?>
