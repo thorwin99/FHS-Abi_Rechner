@@ -1,0 +1,11 @@
+Schlüsselwörter PHP
+global: Wenn innerhalb einer Funktion eine variable definiert ist, ist diese innerhalb der variable wichtiger als eine die den gleichen Namen außerhalb trägt. Wenn man nun in der Funktion die variable mit dem Wort global versieht, wird der wert der äußeren übernommen
+bspl: 
+$var1 = 5;
+function foo(){
+$var1 = 3; //var 1 ist 3
+global var1; //var 1 = 5
+}
+
+include/require 'datei': kopiert den Inhalt der Datein an die angegebene Stelle
+include_once/require_once: kopiert den Inhalt der Datein an die angegebene Stelle außer sie ist bereits geladen worden.

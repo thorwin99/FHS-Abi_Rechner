@@ -1,7 +1,7 @@
 $(document).ready(isReady);
 function isReady(){
 	var canSubmit = false;
-    var languageSet = false
+    var languageSet = false;
     
 	//Submit form
 	$("#form").submit(function(event){
@@ -13,8 +13,8 @@ function isReady(){
 			canSubmit = true;
 			event.preventDefault();
 		}else if(!languageSet){
-			var value = $("#profil").find(":selected").attr("value");
-            if(value == "GE" || value == "WL"){
+			var value = $("#profil").find(":selected").attr("value");//Lädt den Wert/Selected des Feldes Profil
+            if(value == "GE" || value == "WL"){//Nur bei Wirtschaft und Deutsch kann man eine Sprache wählen.
                 $("#order").html("Wähle die Sprache");
                 $("#profil").css("display", "none");
                 $("#absch").css("display", "none");

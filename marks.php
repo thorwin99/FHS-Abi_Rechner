@@ -23,7 +23,7 @@
 			<!--Table with mark fields-->
             <?php
                 require_once 'includes/profileData.php';
-                switch($_POST['absch']){  
+                switch($_POST['absch']){//Wählt je nach abschluss eine ansdere Tabelle  
                     case "Abitur":
                         include 'includes/tabAbi.php';
                         break;

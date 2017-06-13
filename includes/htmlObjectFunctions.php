@@ -1,6 +1,6 @@
 <?php
 
-    function getHTMLObject($name, array $attributes, $content){
+    function getHTMLObject($name, array $attributes, $content){//Erstellt einen String eines HTML objektes
         
         $_parent = "<" . $name . " ";
         foreach($attributes as $key => $value){
@@ -9,10 +9,10 @@
         $_parent = $_parent . ">" . $content . "</" . $name . ">";
         return $_parent;
     }
-    function getAttribute($name, $value){
+    function getAttribute($name, $value){//Erstellt einen String des Attributes name="value"
         return $name . "=\"" . $value . "\"";
     }
-    function getDropdownList($name, array $attributes, array $options){
+    function getDropdownList($name, array $attributes, array $options){//Erstellt den String einer Dropdown Liste
         $attributes["name"] = $name;
         $optionsString = "";
         foreach($options as $key => $value){
@@ -20,7 +20,7 @@
         }
         return getHTMLObject("select", $attributes, $optionsString);
     }
-    function redirect($url){
+    function redirect($url){//Leitet den Browser zur url weiter
         
         header("Location: " . $url);
         

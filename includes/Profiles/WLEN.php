@@ -1,4 +1,5 @@
-<?php
+<?php  
+    //Funktion siehe ER.php
     function loadFHSSubjectChooser(){
         global $EAFWLEN;
         global $PFWLEN;
