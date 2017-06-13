@@ -5,6 +5,7 @@
 			if(!isset($_POST['absch'])){
 				redirect("index.html");
 			}
+            header("Cache-Control: no-cache, must-revalidate, max-age=0");
 			echo $_POST['absch'] . " Rechner"
 			?>
 		</title>
