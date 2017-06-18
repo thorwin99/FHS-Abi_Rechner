@@ -8,7 +8,7 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     $("select.APF").change(onChangeDDAPF);
     
     function submitForm(event){
-        if((".NaWiCheckbox").length != 0){//TG ausgewählt, da nur TG Nawicheckbox hat
+        if($(".NaWiCheckbox").length != 0){//TG ausgewählt, da nur TG Nawicheckbox hat
             if($(".NaWiCheckbox:checked").length == 0){//Bei TG muss geprüft werden, ob überhaubt eine 2. Naturwissenschaft ausgewählt wurde, und die nicht ausgewählte 2. muss entfernt werden.
                 alert("Du musst mindestens eine 2. Naturwissenschaft wählen");
                 event.preventDefault();
