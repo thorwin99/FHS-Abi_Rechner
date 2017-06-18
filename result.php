@@ -22,6 +22,7 @@
         <?php
             switch($_POST['absch']){
                 case "Abitur":
+                    calcAbi();
                     break;
                 case "Fachhochschule":
                     calcFHS();
@@ -70,6 +71,10 @@
                 }
                 
 
+            }
+            
+            function calcAbi(){
+                
             }
         ?>
 	</body>
