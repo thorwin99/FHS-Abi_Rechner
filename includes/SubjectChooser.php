@@ -14,7 +14,7 @@
                 include_once 'includes/Profiles/ER.php';
             break;
         case "WL":
-            if($_POST['languag'] == "DE"){
+            if($_POST['language'] == "DE"){
                 include_once 'includes/Profiles/WLDE.php';
             }else{
                 include_once 'includes/Profiles/WLEN.php';
@@ -24,5 +24,10 @@
                 include_once 'includes/Profiles/TE.php';
             break;
     }
-    loadFHSSubjectChooser();//Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
+    if($_POST['absch'] == "Abitur"){
+        loadAbiSubjectChooser();
+    }else{
+        echo getHTMLObject("script", array("src" => "script/ABISubjects.js"), "");
+        loadFHSSubjectChooser();//Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
+    }
 ?>

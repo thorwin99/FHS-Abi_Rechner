@@ -22,3 +22,9 @@ td input{
 select{
     display: block;
 }
+.mpinput{
+    border: 1px red solid;
+}
+.pinput{
+    border: 1px green solid;
+}

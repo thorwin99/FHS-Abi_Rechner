@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<!--Includes settings menu-->
-		<?php// include 'includes/settingsBar.php';?>
+		<?php include 'includes/settingsBar.php';?>
 		<h1>Noteneingabe</h1>
 		<form id="marksForm" action="result.php" method="post">
 			<!--Table with mark fields-->
