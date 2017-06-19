@@ -27,6 +27,7 @@
         loadSubjects($IVFER, "IVF", 4);
         loadSubjects($IIFER, "IIF", 2);
         loadNaWiSubjects($NAFER, $NAER);
+        loadSecLanguage($_POST['seclanguage']);
     }
 
     function loadPSubjects($EAF, $APF){
@@ -104,6 +105,11 @@
                 }
             }
         }
+    }
+    function loadSecLanguage($lang){
+        $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache"), "");
+        $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
+        echo $HiddenLabel . $HiddenAmountField;
     }
 
     function loadEAs(array $EAF){//Lädt die e.A. Fächer als verstecktes Input feld.

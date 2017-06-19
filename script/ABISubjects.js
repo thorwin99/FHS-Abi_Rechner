@@ -3,9 +3,11 @@ $(document).ready(isReady);
 function isReady(){//Wird ausgeführt, wenn document geladen.
     onChangeNawiFach();
     onChangeDDAPF();
+    onChangeFremdsprachFach();
     $("#subjectFrom").submit(submitForm);
     $(".INaWi").change(onChangeNawiFach);
     $("select.APF").change(onChangeDDAPF);
+    $(".Fremdsprache.APF").change(onChangeFremdsprachFach);
     
     function submitForm(event){
         if($(".NaWiCheckbox").length != 0){//TG ausgewählt, da nur TG Nawicheckbox hat
@@ -41,5 +43,11 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     
     function onChangeDDAPF(event){
         $("input.APF[type=checkbox]").attr("name", "mdlPrf[" + $("select.APF").val() + "]");
+    }
+    
+    function onChangeFremdsprachFach(event){
+        newVal = $(".Fremdsprache.APF").val();
+        otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
+        $(".Fremdsprache").not(".APF").val(otherVals);
     }
 }

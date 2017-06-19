@@ -28,6 +28,7 @@
         loadSubjects($IVFGEDE, "IVF", 4);
         loadSubjects($IIFGE, "IIF", 2);
         loadNaWiSubjects($NAFGE, $NAGE);
+        loadSecLanguage($_POST['seclanguage']);
     }
 
     function loadPSubjects($EAF, $APF){
@@ -105,6 +106,11 @@
                 }
             }
         }
+    }
+    function loadSecLanguage($lang){
+        $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache"), "");
+        $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
+        echo $HiddenLabel . $HiddenAmountField;
     }
 
     function loadEAs(array $EAF){

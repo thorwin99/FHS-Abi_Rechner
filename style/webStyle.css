@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 body{
 	background: lightgoldenrodyellow;
-	font-family: monospace, arial;
+	font-family: 'roboto', monospace, arial;
 }
 
 #settingBar{
@@ -27,4 +28,7 @@ select{
 }
 .pinput{
     border: 1px green solid;
+}
+#settingBar td select{
+    width: 100%;
 }
