@@ -58,10 +58,13 @@
         $Label = getHTMLObject("td", array(), $PSubject);
         $markinput = getHTMLObject("input", array("type" => "number", "name" => "marks[]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0), "");
         $mpmarkinput = getHTMLObject("input", array("type" => "number", "name" => "mpmarks[" . $PSubject . "]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "class" => "mpinput"), "");
-        $mtd = str_repeat(getHTMLObject("td", array(), $markinput), $_POST['subjamount'][array_search($PSubject, $_POST['subj'])]);
+        $MarkCount = $_POST['subjamount'][array_search($PSubject, $_POST['subj'])];
+        
+        
+        $mtd = str_repeat(getHTMLObject("td", array(), $markinput), $MarkCount);
         $mptd = getHTMLObject("td", array(), $mpmarkinput);
 
-        $TRContent = $Label . $mtd . $empty . $mptd;
+        $TRContent = $Label . $mtd . str_repeat($empty, 4-$MarkCount) . $empty . $mptd;
         $table = $table . getHTMLObject("tr", array(), $TRContent);
     }
     
