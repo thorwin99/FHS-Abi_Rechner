@@ -9,3 +9,5 @@ global var1; //var 1 = 5
 
 include/require 'datei': kopiert den Inhalt der Datein an die angegebene Stelle
 include_once/require_once: kopiert den Inhalt der Datein an die angegebene Stelle außer sie ist bereits geladen worden.
+ceil($var): Rundet $var auf
+floor($var): Rundet $var ab

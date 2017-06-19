@@ -74,7 +74,72 @@
             }
             
             function calcAbi(){
+                $MarksCount = $_POST['marks'] + $_POST['emakrs'];
+                $AllowedUn = floor(($MarksCount * 0.2));
+                $MinPNotUn = 3;
+                $MinPMarkSum = 20;
+                $MinEASum = 40;
+                $MinPSum = 100;
+                $MinMarkSum = 200;
+                $SUMEMarks = 0;
+                $SUMMarks = 0;
+                $SUMPuberMinPNotUn = 0;
+                $SUMNull = 0;
+                $SUMPMarks = 0;
+                $CountUn = 0;
+                $PMarksSum = array();
+                foreach($_POST['emarks'] as $emark){
+                    $SUMEMarks += $emark;
+                    if($emark < 5){
+                        if($emark == 0)$SUMNull++;
+                        $CountUn++;
+                    }
+                }//Summe der e.A. Noten bilden.
+                foreach($_POST['marks'] as $mark){
+                    $SUMMarks += $mark;
+                    if($emark < 5){
+                        if($emark == 0)$SUMNull++;
+                        $CountUn++;
+                    }
+                }//Summe der anderen Fächer bilden
+                foreach($_POST['pmarks'] as $subject => $mark){
+                    if(isset($_POST['mpmarks'][$key])){
+                        $MpMark = $_POST['mpmarks'][$key];
+                        $thisSum = ceil((4*($mark*+$MpMark)/3));
+                        $PMarksSum[$key] = $thisSum;
+                        $SUMPMarks += $thisSum;
+                        if($thisSum >= $MinPMarkSum){
+                            $SUMPuberMinPNotUn++;
+                        }
+                    }else{
+                        $thisSum = ceil((4*$mark));
+                        $PMarksSum[$key] = $thisSum;
+                        if($thisSum >= $MinPMarkSum){
+                            $SUMPuberMinPNotUn++;
+                        }
+                        $SUMPMarks += $thisSum;
+                    }
+                    
+                    
+                }//Summe der jeweiligen Prüfung bilden.
                 
+                
+                if($SUMNull > 0){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Du hast " . $SUMNull . " mal 0 Punkte. Erlaubt sind 0 mal 0 Punkte.");
+                }else if($SUMEMarks < $MinEASum){//Prüfe ob genug e.A. Punktzahl
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in e.A. Fächern: " . $SUMEMarks . " von " . $MinEASum);
+                }else if($AllowedUn < $CountUn){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . $CountUn);
+                }else if(round(($SUMEMarks + $SUMMarks)/$MarksCount*40) < $MinMarkSum){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in der Summe: " . round(($SUMEMarks + $SUMMarks)/$MarksCount*40) . " von " . $MinMarkSum);
+                }else if(!($SUMPuberMinPNotUn < $MinPNotUn)){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Prüfungen unter 5 Punkten");
+                }else if($SUMPMarks < $MinPSum){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
+                }else{
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten.");
+                    echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
+                }
             }
         ?>
 	</body>
