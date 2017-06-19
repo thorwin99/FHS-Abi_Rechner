@@ -74,7 +74,7 @@
             }
             
             function calcAbi(){
-                $MarksCount = $_POST['marks'] + $_POST['emakrs'];
+                $MarksCount = sizeof($_POST['marks']) + sizeof($_POST['emarks']);
                 $AllowedUn = floor(($MarksCount * 0.2));
                 $MinPNotUn = 3;
                 $MinPMarkSum = 20;
@@ -103,17 +103,17 @@
                     }
                 }//Summe der anderen Fächer bilden
                 foreach($_POST['pmarks'] as $subject => $mark){
-                    if(isset($_POST['mpmarks'][$key])){
-                        $MpMark = $_POST['mpmarks'][$key];
+                    if(isset($_POST['mpmarks'][$subject])){
+                        $MpMark = $_POST['mpmarks'][$subject];
                         $thisSum = ceil((4*($mark*+$MpMark)/3));
-                        $PMarksSum[$key] = $thisSum;
+                        $PMarksSum[$subject] = $thisSum;
                         $SUMPMarks += $thisSum;
                         if($thisSum >= $MinPMarkSum){
                             $SUMPuberMinPNotUn++;
                         }
                     }else{
                         $thisSum = ceil((4*$mark));
-                        $PMarksSum[$key] = $thisSum;
+                        $PMarksSum[$subject] = $thisSum;
                         if($thisSum >= $MinPMarkSum){
                             $SUMPuberMinPNotUn++;
                         }
