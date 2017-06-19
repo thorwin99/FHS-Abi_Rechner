@@ -13,8 +13,8 @@
 			<option value="WL" <?php echo ($_POST['profil'] == "WL") ? "selected=\"selected\"" : "";?>>Wirtschaft</option>
 		</select>
         <select id="language" style="display:none;" name="language">
-                <option value="DE" <?php echo ($_POST['language'] == "DE") ? "selected=\"selected\"" : "";?>>Deutsch</option>
-                <option value="EN" <?php echo ($_POST['language'] == "EN") ? "selected=\"selected\"" : "";?>>Englisch</option>
+                <option value="DE" <?php echo (isset($_POST['language']) && $_POST['language'] == "DE") ? "selected=\"selected\"" : "";?>>Deutsch</option>
+                <option value="EN" <?php echo (isset($_POST['language']) && $_POST['language'] == "EN") ? "selected=\"selected\"" : "";?>>Englisch</option>
         </select>
         <select id="seclanguage" style="display:block;" name="seclanguage">
                 <option value="Französisch" <?php echo ($_POST['seclanguage'] == "Französisch") ? "selected=\"selected\"" : "";?>>Französisch</option>

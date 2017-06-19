@@ -23,7 +23,7 @@ select{
     display: block;
 }
 .mpinput{
-    border: 1px red solid;
+    border: 1px blue solid;
 }
 .pinput{
     border: 1px green solid;
