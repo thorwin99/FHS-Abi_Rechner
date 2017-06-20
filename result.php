@@ -84,7 +84,7 @@
                 $MinMarkSum = 200;
                 $SUMEMarks = 0;
                 $SUMMarks = 0;
-                $SUMPuberMinPNotUn = 0;
+                $SUMPunterMinPNotUn = 0;
                 $SUMNull = 0;
                 $SUMPMarks = 0;
                 $CountUn = 0;
@@ -109,8 +109,8 @@
                         $thisSum = ceil((4*($mark*+$MpMark)/3));
                         $PMarksSum[$subject] = $thisSum;
                         $SUMPMarks += $thisSum;
-                        if($thisSum >= $MinPMarkSum){
-                            $SUMPuberMinPNotUn++;
+                        if($thisSum < $MinPMarkSum){
+                            $SUMPunterMinPNotUn++;
                         }
                     }else{
                         $thisSum = ceil((4*$mark));
@@ -133,7 +133,7 @@
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . $CountUn);
                 }else if(round(($SUMEMarks + $SUMMarks)/$MarksCount*40) < $MinMarkSum){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in der Summe: " . round(($SUMEMarks + $SUMMarks)/$MarksCount*40) . " von " . $MinMarkSum);
-                }else if(!($SUMPuberMinPNotUn < $MinPNotUn)){
+                }else if(!($SUMPunterMinPNotUn < $MinPNotUn)){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Prüfungen unter 5 Punkten");
                 }else if($SUMPMarks < $MinPSum){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
