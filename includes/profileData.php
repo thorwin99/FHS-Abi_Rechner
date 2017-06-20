@@ -45,18 +45,18 @@
     $EAFWLEN = array($_SUBJ['Vwl'], $_SUBJ['Eng']); //Prüfungsfächer Wirtschaft Englisch / e.A. Fächer
 
     $PFGESDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Bio'], "Fremdsprache" => &$LANGUAGES);                                            //Pflichtfächer Gesundheit Deutsch
-    $PFGESEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['De'], $_SUBJ['Bio'],);                                                            //Pflichtfächer Gesundheit Englisch
+    $PFGESEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['De'], $_SUBJ['Bio']);                                                            //Pflichtfächer Gesundheit Englisch
     $PFTE = array($_SUBJ['De'], $_SUBJ['Gmk'], "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));  //Pflichtfächer Technik
     $PFER = array($_SUBJ['Ma'], $_SUBJ['Gmk'], "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio']));  //Pflichtfächer Ernährung
     $PFWLDE = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'], "Fremdsprache" => &$LANGUAGES);                                             //Pflichtfächer Wirtschaft Deutsch
-    $PFELEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'], $_SUBJ['De']);                                                              //Pflichtfächer Wirtschaft Englisch
+    $PFWLEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'], $_SUBJ['De']);                                                              //Pflichtfächer Wirtschaft Englisch
 
     $FGESDE = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Ge'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                             //Wahlfächer Gesundheit Deutsch
-    $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);                            //Wahlfächer Gesundheit Deutsch
+    $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                            //Wahlfächer Gesundheit Deutsch
     $FTE = array($_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));               //Wahlfächer Technik
     $FER = array($_SUBJ['Wl'], $_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio'])); //Wahlfächer Ernährung
     $FWLDE = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                                             //Wahlfächer Wirtschaft Deutsch
-    $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);                              //Wahlfächer Wirtschaft Englisch
+    $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                              //Wahlfächer Wirtschaft Englisch
 
 
     //AbiFächer

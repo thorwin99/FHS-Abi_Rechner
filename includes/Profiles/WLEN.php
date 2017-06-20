@@ -5,8 +5,8 @@
         global $PFWLEN;
         global $FWLEN;
         global $LANGUAGES;
+        $LANGUAGES = array();
         array_push($LANGUAGES, $_POST['seclanguage']);//Fügt die 2. Fremdsprache zu der anderen hinzu
-        
         loadEAs($EAFWLEN);
         loadPFs($PFWLEN);
         loadWFs($FWLEN);
