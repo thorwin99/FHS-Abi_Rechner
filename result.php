@@ -2,7 +2,8 @@
 	<head>
 		<title>
 			<?php
-            require 'includes/htmlObjectFunctions.php';
+            require_once 'includes/htmlObjectFunctions.php';
+            require_once 'includes/profileData.php';
 			if(!isset($_POST['absch'])){
 				redirect("index.html");
 			}
@@ -32,7 +33,7 @@
             }
         
             function calcFHS(){
-                $AllowedUn = 6;//Erlaubte Unterkurse gesamt
+                $AllowedUn = floor((sizeof($_POST['emarks']) + sizeof($_POST['marks']))*0.4);//Erlaubte Unterkurse gesamt
                 $AllowedEUn = 2;//Erlaubte Unterkurse in e.A.
                 $MinEASum = 20;//Mindestsumme aller e.A. Fächer
                 $MinMarkSum = 95;//Mindestsumme aller Noten
@@ -52,19 +53,19 @@
                         $CountUn++;
                     }
                 }
-                if($CountEUn >= $AllowedEUn){//Prüfe ob zu viele e.A. Unterkurse
-                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele e.A. Unterkurse: " . $CountEUn);
+                if($AllowedEUn < $CountEUn){//Prüfe ob zu viele e.A. Unterkurse
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele e.A. Unterkurse: " . $CountEUn . " von " . $AllowedEUn);
                 }else{
-                    if($CountUn + $CountEUn >= $AllowedUn){//Prüfe ob zu viele Unterkurse
-                        echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . ($CountEUn + $CountUn));
+                    if($AllowedUn < $CountUn + $CountEUn){//Prüfe ob zu viele Unterkurse
+                        echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . ($CountEUn + $CountUn) . " von " . $AllowedUn);
                     }else{
                         if($SUMEmarks < $MinEASum){//Prüfe ob genug e.A. Punkte
-                            echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig e.A. Punkte: " . $SUMEmarks . " / " . $MinEASum);
+                            echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig e.A. Punkte: " . $SUMEmarks . " von " . $MinEASum);
                         }else{
                             if($SUMPMarks + $SUMEmarks < $MinMarkSum){//Prüfe ob genug Punkte
                                 echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte: " . ($SUMEmarks + $SUMPMarks). " / " . $MinMarkSum);
                             }else{//Zeige Ergebnis
-                                echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEmarks + $SUMPMarks) . " Punkten");
+                                echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEmarks + $SUMPMarks) . " Punkten, das entspricht einer " . getMarkFromPoints(($SUMEmarks + $SUMPMarks), 1));
                             }
                         }
                     }
@@ -137,9 +138,46 @@
                 }else if($SUMPMarks < $MinPSum){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
                 }else{
-                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten.");
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten, das entspricht einer " . getMarkFromPoints(($SUMEmarks + $SUMPMarks), 0));
                     echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
                 }
+            }
+            
+            function getMarkFromPoints($points, $type){//Type = 0 Abi   Type = 1 FHS
+                global $FHSMarkTable;
+                global $AbiMarkTable;
+                switch($type){
+                    case 0:
+                        $prevValue = 0;
+                        $previousTablePoints = 0;
+                        foreach($AbiMarkTable as $refPoints => $value){
+                            if($points >= $previousTablePoints && $points < $refPoints){
+                                return $prevValue;
+                            }else{
+                                $valueints = $refPoints;
+                                $prevValue = $value;
+                            }
+                        }
+                        return $AbiMarkTable[$previousTablePoints];
+                        break;
+                    case 1:
+                        $prevValue = 0;
+                        $previousTablePoints = 0;
+                        foreach($FHSMarkTable as $refPoints => $value){
+                            if($points >= $previousTablePoints && $points < $refPoints){
+                                return $prevValue;
+                            }else{
+                                $previousTablePoints = $refPoints;
+                                $prevValue = $value;
+                            }
+                        }
+                        return $FHSMarkTable[$previousTablePoints];
+                        break;
+                    default:
+                        break;
+                }
+                
+                
             }
         ?>
 	</body>

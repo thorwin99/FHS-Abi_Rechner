@@ -6,7 +6,7 @@ function isReady(){
 	//Submit form
 	$("#form").submit(function(event){
 		
-		if(canSubmit == 0){
+		/*if(canSubmit == 0){
 			$("#order").html("Wähle dein Profil");
 			$("#profil").css("display", "contents");
 			$("#absch").css("display", "none");
@@ -31,5 +31,5 @@ function isReady(){
             }
 		}
 		
-	});
+	});*/
 }

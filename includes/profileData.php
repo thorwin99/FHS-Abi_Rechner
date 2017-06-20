@@ -26,6 +26,12 @@
                     "Li" => "Literatur",
                     "Mu" => "Musik");
 
+    $AbiMarkTable = array();//Array mit den Noten punkte referencen für Abi
+    $FHSMarkTable = array();//Array mit den Noten punkte referencen für FHS
+
+    loadCSVToArray("./csv/FHSMarkTable.CSV", $FHSMarkTable);//Lädt die Tabelle aus der csv datei
+    loadCSVToArray("./csv/ABIMarkTable.CSV", $AbiMarkTable);//Lädt die Tabelle aus der csv datei
+
     //FHS Fächer organisation.
     $LANGUAGES = array( $_SUBJ['Eng']/*, $_SUBJ['Fr'], $_SUBJ['Spa']*/);
     $RELPHI = array($_SUBJ['Re'], $_SUBJ['Phi']);
@@ -46,11 +52,11 @@
     $PFELEN = array($_SUBJ['Ma'], $_SUBJ['Gmk'], $_SUBJ['Phy'], $_SUBJ['De']);                                                              //Pflichtfächer Wirtschaft Englisch
 
     $FGESDE = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Ge'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                             //Wahlfächer Gesundheit Deutsch
-    $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                            //Wahlfächer Gesundheit Deutsch
+    $FGESEN = array($_SUBJ['Wl'], $_SUBJ['Bin'], $_SUBJ['Spo'], $_SUBJ['Erz'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);                            //Wahlfächer Gesundheit Deutsch
     $FTE = array($_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));               //Wahlfächer Technik
     $FER = array($_SUBJ['Wl'], $_SUBJ['Bin'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES, "Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio'])); //Wahlfächer Ernährung
     $FWLDE = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                                             //Wahlfächer Wirtschaft Deutsch
-    $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => &$LANGUAGES);                              //Wahlfächer Wirtschaft Englisch
+    $FWLEN = array($_SUBJ['Bin'], $_SUBJ['Rl'], $_SUBJ['Wl'], $_SUBJ['Dsp'], "Religion/Philosophie" => $RELPHI, "Fremdsprache" => $LANGUAGES);                              //Wahlfächer Wirtschaft Englisch
 
 
     //AbiFächer
@@ -84,4 +90,13 @@
     $NATE = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']), $_SUBJ['Bin']);//2. Nawi Technik
     $NAER = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio'], $_SUBJ['Bin']));//2. Nawi Ernährung
     $NAWL = array();//2. Nawi Wirtschaft
+
+    function loadCSVToArray($FileName, &$array){
+        $fileHandler = fopen($FileName, "r");//Öffnet die datei $fileName als readonly.
+        while(!feof($fileHandler)){//Geht jede zeile der datei durch bis zum endoffile
+            $line = fgetcsv($fileHandler, 1024);//Lädt die zeile in das $line array. Die elemente sind in der datei getrennt mits kommata
+            $array[$line[0]] = strval($line[1]);
+        }
+        fclose($fileHandler);//Schließt den FileStream
+    }
 ?>

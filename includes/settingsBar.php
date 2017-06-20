@@ -18,26 +18,20 @@
                         <option value="WL" <?php echo (isset($_POST['profil']) && $_POST['profil'] == "WL") ? "selected=\"selected\"" : "";?>>Wirtschaft</option>
                     </select>
                 </td>
-            </tr>
-            <tr>
-                <td>
-                    <select id="language" style="display:none;" name="language">
-                        <option value="DE" <?php echo (isset($_POST['language']) && $_POST['language'] == "DE") ? "selected=\"selected\"" : "";?>>Deutsch</option>
-                        <option value="EN" <?php echo (isset($_POST['language']) && $_POST['language'] == "EN") ? "selected=\"selected\"" : "";?>>Englisch</option>
-                    </select>
-                </td>
                 <td>
                     <select id="seclanguage" style="display:block;" name="seclanguage">
                         <option value="Französisch" <?php echo (isset($_POST['seclanguage']) && $_POST['seclanguage'] == "Französisch") ? "selected=\"selected\"" : "";?>>Französisch</option>
                         <option value="Spanisch" <?php echo (isset($_POST['seclanguage']) && $_POST['seclanguage'] == "Spanisch") ? "selected=\"selected\"" : "";?>>Spanisch</option>
                     </select>
                 </td>
+                 <td>
+                    <select id="language" name="language">
+                        <option value="DE" <?php echo (isset($_POST['language']) && $_POST['language'] == "DE") ? "selected=\"selected\"" : "";?>>Deutsch</option>
+                        <option value="EN" <?php echo (isset($_POST['language']) && $_POST['language'] == "EN") ? "selected=\"selected\"" : "";?>>Englisch</option>
+                    </select>
+                </td>
             </tr>
         </table>
-		
-		
-        
-        
 		<input type="submit" value="Ändern">
 	</form>
 </div>

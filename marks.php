@@ -2,7 +2,7 @@
 	<head>
 		<title>
 			<?php
-            require 'includes/htmlObjectFunctions.php';
+            require_once 'includes/htmlObjectFunctions.php';
 			if(!isset($_POST['absch'])){
 				redirect("index.html");
 			}

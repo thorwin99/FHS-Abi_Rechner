@@ -10,27 +10,54 @@
 		<script type="text/javascript" src="script/index.js"></script>
 	</head>
 	<body>
-		<h1 id="order">Wähle deinen Abschluss</h1>
+		<h1 id="order">Wilkommen zum Abschlussrechner</h1>
 		<form id="form" action="chooseSubjects.php" method="post">
-			<select id="absch" style="display:contents;" name="absch">
-				<option value="Abitur">Abitur</option>
-				<option value="Fachhochschule">Fachhochschule</option>
-			</select>
-			<select id="profil" style="display:none;" name="profil">
-				<option value="GE">Gesundheit und Soziales</option>
-				<option value="ER">Ernährung</option>
-				<option value="TE">Technik</option>
-				<option value="WL">Wirtschaft</option>
-			</select>
-            <select id="seclanguage" style="display:none;" name="seclanguage">
-                <option value="Französisch">Französisch</option>
-                <option value="Spanisch">Spanisch</option>
-            </select>
-            <select id="language" style="display:none;" name="language">
-                <option value="DE">Deutsch</option>
-                <option value="EN">Englisch</option>
-            </select>
-			<input type="submit" value="Bestätigen">
+            <table>
+                <tr>
+                    <td>
+                        <label>Wähle den Abschluss</label>
+                        <select id="absch" name="absch">
+                            <option value="Abitur">Abitur</option>
+				            <option value="Fachhochschule">Fachhochschule</option>
+			             </select>
+                    </td>
+                
+                </tr>
+                <tr>
+                    <td>
+                        <label>Wähle das Profil</label>
+                        <select id="profil" name="profil">
+				            <option value="GE">Gesundheit und Soziales</option>
+				            <option value="ER">Ernährung</option>
+				            <option value="TE">Technik</option>
+				            <option value="WL">Wirtschaft</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Wähle die 2. Fremdsprache</label>
+                        <select id="seclanguage" name="seclanguage">
+                            <option value="Französisch">Französisch</option>
+                            <option value="Spanisch">Spanisch</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Wähle die Fachsprache</label>
+                        <select id="language" name="language">
+                            <option value="DE">Deutsch</option>
+                            <option value="EN">Englisch</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" value="Bestätigen">Bestätigen</button>
+                    </td>
+                </tr>
+            </table>
 		</form>
 	</body>
 </html>
