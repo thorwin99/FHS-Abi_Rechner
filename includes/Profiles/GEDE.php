@@ -122,7 +122,7 @@
         foreach($PF as $key => $Subject){
             if(gettype($Subject) == "array"){
                 $Dropdown = getDropdownList("psubj[]", array("class" => $key, "id" => "FPF"), $Subject);
-                echo getHTMLObject("p", array(), $key);
+                echo getHTMLObject("h3", array(), $key);
                 echo $Dropdown;
             }else{
                 echo getHTMLObject("input", array("name" => "psubj[]", "value" => $Subject, "type" => "hidden"), "");

@@ -115,8 +115,8 @@
                     }else{
                         $thisSum = ceil((4*$mark));
                         $PMarksSum[$subject] = $thisSum;
-                        if($thisSum >= $MinPMarkSum){
-                            $SUMPuberMinPNotUn++;
+                        if($thisSum < $MinPMarkSum){
+                            $SUMPunterMinPNotUn++;
                         }
                         $SUMPMarks += $thisSum;
                     }
@@ -138,7 +138,7 @@
                 }else if($SUMPMarks < $MinPSum){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
                 }else{
-                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten, das entspricht einer " . getMarkFromPoints(($SUMEmarks + $SUMPMarks), 0));
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten, das entspricht einer " . getMarkFromPoints(($SUMEMarks + $SUMMarks), 0));
                     echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
                 }
             }
@@ -154,7 +154,7 @@
                             if($points >= $previousTablePoints && $points < $refPoints){
                                 return $prevValue;
                             }else{
-                                $valueints = $refPoints;
+                                $previousTablePoints = $refPoints;
                                 $prevValue = $value;
                             }
                         }

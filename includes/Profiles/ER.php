@@ -124,7 +124,7 @@
         foreach($PF as $key => $Subject){
             if(gettype($Subject) == "array"){//Wenn das momentane PF ein array ist, dann kann man wählen
                 $Dropdown = getDropdownList("psubj[]", array("class" => $key, "id" => "FPF"), $Subject);//Die Klasse der Dropdown Liste ist der Key des Arrays, für spätere JS anwendung
-                echo getHTMLObject("p", array(), $key);//Gibt nun den Key sichtbar als Titel aus
+                echo getHTMLObject("h3", array(), $key);//Gibt nun den Key sichtbar als Titel aus
                 echo $Dropdown;//Gibt das Dropdown menü aus
             }else{
                 echo getHTMLObject("input", array("name" => "psubj[]", "value" => $Subject, "type" => "hidden"), "");//Das Fach ist nicht wählbar, also auch Hidden. Es wird als psubj an Marks.php übergeben.
