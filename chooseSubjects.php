@@ -25,6 +25,7 @@
         ?>
 	</head>
 	<body>
+        <?php include 'includes/navBar.html'?>
         <?php include 'includes/settingsBar.php';?>
 		<h1 id="order">Wähle deine Fächer</h1>
 		<form id="subjectFrom" action="marks.php" method="post">

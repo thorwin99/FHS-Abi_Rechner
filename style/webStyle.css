@@ -2,6 +2,7 @@
 body{
 	background: lightgoldenrodyellow;
 	font-family: 'roboto', monospace, arial;
+    margin: 0;
 }
 
 #settingBar{
@@ -54,6 +55,7 @@ button, input[type=submit]{
     margin-top: 2px;
     text-transform: uppercase;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    transition: .3s;
 }
 button:hover, input[type=submit]:hover{
     cursor: pointer;
@@ -64,4 +66,47 @@ button:active, input[type=submit]:active{
     cursor: pointer;
     background-color: #bbb;
     transition: .3s ease-out;
+}
+nav{
+    height: 64px;
+    color: white;
+    width: 100%;
+    display: block;
+    box-sizing: inherit;
+    background-color: #1a237e;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.navBar{
+    position: relative;
+    height: 100%;
+    box-sizing: inherit;
+    
+}
+.logo{
+    position: absolute;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 0;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+    line-height: 64px;
+}
+.navBarItems{
+    padding-left: 0;
+    list-style-type: none;
+    float: right;
+    margin: 0;
+    line-height: 64px;
+    background-color: rgba(0,0,0,0.1);
+    box-sizing: inherit;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+.navBarItems a{
+    padding: 0 20px;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
 }

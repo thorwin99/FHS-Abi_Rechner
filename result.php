@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="script/marks.js"></script>
 	</head>
 	<body>
+        <?php include 'includes/navBar.html'?>
 		<!--Includes settings menu-->
 		<?php //include 'includes/settingsBar.php';?>
 		<h1>Ergebnis</h1>
