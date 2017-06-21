@@ -20,8 +20,9 @@ body{
 
 /*Settings Bar Styles*/
 .settingBar{
-	width: 0;
+	width: auto;
     height: 100%;
+    transform: translateX(-100%);
 	background: white;
     line-height: 25px;
     left: 0;

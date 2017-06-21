@@ -8,14 +8,14 @@ function isReady(){
     $(".openSettings").click(function(){
         switch(state){
             case 0:
-                $(".settingBar").css("width", "200px");
+                $(".settingBar").css("transform", "translateX(0%)");
                 $(".page").css("margin-left", "200px");
                 $(".overlay").show().css("background-color", "rgba(0,0,0,0.5)");
                 rotateSettingsWheel(-360);
                 state = 1;
                 break;
             case 1:
-                $(".settingBar").css("width", "0");
+                $(".settingBar").css("transform", "translateX(-100%)");
                 $(".page").css("margin-left", "0");
                 $(".overlay").css("background-color", "rgba(0,0,0,0)").hide(300);
                 rotateSettingsWheel(360);
@@ -42,7 +42,5 @@ function isReady(){
     
     function rotateSettingsWheel(degree){
         $(".rotator").css("transform", "rotate(" + degree + "deg)")
-        
-        
     }
 }
