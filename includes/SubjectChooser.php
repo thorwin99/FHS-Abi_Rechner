@@ -27,7 +27,6 @@
     if($_POST['absch'] == "Abitur"){
         loadAbiSubjectChooser();
     }else{
-        echo getHTMLObject("script", array("src" => "script/ABISubjects.js"), "");
         loadFHSSubjectChooser();//Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
     }
 ?>

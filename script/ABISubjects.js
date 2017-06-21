@@ -25,7 +25,6 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     }
     
     function onChangeNawiFach(event){
-        console.log("change");
         if(!$(".INaWi").length)return;
         var value = $(".Naturwissenschaft.INaWi").val();
         $(".Naturwissenschaft").not(".INaWi").find("option[value=" + value + "]").hide().removeAttr('selected');

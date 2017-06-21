@@ -1,29 +1,48 @@
+/*Imports*/
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/*General*/
 body{
-	background: lightgoldenrodyellow;
+	background-color: #fafafa;
 	font-family: 'roboto', monospace, arial;
+    color: rgba(0, 0, 0, 0.9);
     margin: 0;
 }
 
-#settingBar{
-	width: auto;
-	background: lightgray;
-	border: none;
-    border-radius: 2px;
+.page{
+    width: 100%;
+    transition: margin-left 0.3s;
+}
+.content{
+    padding: 20px;
+}
+
+/*Settings Bar Styles*/
+.settingBar{
+	width: 0;
+    height: 100%;
+	background: white;
     line-height: 25px;
-	padding: 10px;
-    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    left: 0;
+    top: 0;
+    overflow-x: hidden;
+    transition: 0.3s;
+    position: fixed;
+    z-index: 2;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    margin-top: 64px;
+}
+.settingContent{
+    padding: 10px;
 }
 #settingsTitle{
 	
 	margin: 0px;
 	
 }
-td input{
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+
+/*Form Styles*/
 select{
     display: block;
 }
@@ -33,6 +52,8 @@ select{
 .pinput{
     border: 1px green solid;
 }
+
+/*table styles*/
 td select{
     width: 100%;
 }
@@ -42,6 +63,13 @@ td input{
 td{
     padding: 3px;
 }
+td input{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*Button Styles*/
 button, input[type=submit]{
     background-color: #868686;
     color: white;
@@ -67,26 +95,46 @@ button:active, input[type=submit]:active{
     background-color: #bbb;
     transition: .3s ease-out;
 }
+
+/*Navigation bar style*/
 nav{
+    transition: margin-left 0.3s;
     height: 64px;
     color: white;
-    width: 100%;
+    width: auto;
     display: block;
     box-sizing: inherit;
     background-color: #1a237e;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    margin-left: 0px;
+    z-index: 3;
 }
 .navBar{
     position: relative;
     height: 100%;
     box-sizing: inherit;
-    
+}
+.rotator{
+    transition: transform 0.3s ease-in-out;
+}
+.openSettings{
+    line-height: 64px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 2rem;
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+    transition: color 0.1s ease-in;
+}
+.openSettings:active{
+    color: grey;
 }
 .logo{
     position: absolute;
     display: inline-block;
     font-size: 2rem;
-    padding: 0;
+    padding-left: 5px;
     white-space: nowrap;
     text-decoration: none;
     color: white;
@@ -109,4 +157,13 @@ nav{
     font-size: 1rem;
     color: white;
     text-decoration: none;
+}
+.overlay{
+    width: 100%;
+    height: 100%;
+    float: right;
+    display: none;
+    z-index: 1;
+    position: fixed;
+    transition: 0.3s;
 }

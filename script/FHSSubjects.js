@@ -5,8 +5,8 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     onChangeNawiFach();//Die Dropdownlisten werden so eingestellt, dass keine Dopplung vorhanden ist.
     $("#subjectFrom").submit(formSubmit);//Wenn Formular abgesendet wird
     $(".CountField").change(onChangeCountNumber);//Wenn die Anzahl der Noten eines Faches eingestellt wird
-    $(".Fremdsprache[id=FPF]").change(onChangeFremdsprachFach);//Wenn man eine Dropdownliste ändert
-    $(".Naturwissenschaft[id=FPF]").change(onChangeNawiFach);
+    $(".Fremdsprache.FPF").change(onChangeFremdsprachFach);//Wenn man eine Dropdownliste ändert
+    $(".Naturwissenschaft.FPF").change(onChangeNawiFach);
 }
 function formSubmit(event){
     var nullSubjects = [];//Liste mit Fächern, die 0 mal eingebracht werden.
@@ -44,16 +44,16 @@ function onChangeCountNumber(event){
     });
 }
 function onChangeFremdsprachFach(event){//Andert die Dropdownlisten der Fremdsprachen so, dass sie gegengesetzt sind.
-    if(!$(".Fremdsprache[id=FPF]").length)return;
-    var value = $(".Fremdsprache[id=FPF]").val();
-    $(".Fremdsprache").not(".Fremdsprache[id=FPF]").find("option[value=" + value + "]").hide().removeAttr('selected');
-    $(".Fremdsprache").not(".Fremdsprache[id=FPF]").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected');
+    if(!$(".Fremdsprache.FPF").length)return;
+    var value = $(".Fremdsprache.FPF").val();
+    $(".Fremdsprache").not(".FPF").find("option[value=" + value + "]").hide().removeAttr('selected');
+    $(".Fremdsprache").not(".FPF").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected').trigger("chosen:updated");;
 }
 function onChangeNawiFach(event){
-    if(!$(".Naturwissenschaft[id=FPF]").length)return;
-    var value = $(".Naturwissenschaft[id=FPF]").val();
-    $(".Naturwissenschaft").not(".Naturwissenschaft[id=FPF]").find("option[value=" + value + "]").hide().removeAttr('selected');
-    $(".Naturwissenschaft").not(".Naturwissenschaft[id=FPF]").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected');
+    if(!$(".Naturwissenschaft.FPF").length)return;
+    var value = $(".Naturwissenschaft.FPF").val();
+    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value=" + value + "]").hide().removeAttr('selected');
+    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected').trigger("chosen:updated");;
 }//Andert die Dropdownlisten der Nawi so, dass sie gegengesetzt sind.
 function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
     var sumOfSubjects = 0;

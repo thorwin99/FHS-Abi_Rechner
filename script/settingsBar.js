@@ -16,5 +16,4 @@ function isReady(){
             $("#language").css("display", "none");
         }
     }
-    
 }
