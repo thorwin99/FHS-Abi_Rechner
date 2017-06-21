@@ -25,18 +25,22 @@
         ?>
 	</head>
 	<body>
-        <?php include 'includes/navBar.html'?>
+        <!--Include settingsBar-->
         <?php include 'includes/settingsBar.php';?>
-		<h1 id="order">Wähle deine Fächer</h1>
-		<form id="subjectFrom" action="marks.php" method="post">
-			<?php
-				include 'includes/SubjectChooser.php';
-			?>
-			<input type="submit" value="Bestätigen">
-			<!--Hidden values-->
-			<input type="hidden" name="absch" value="<?php echo $_POST['absch']?>">
-			<input type="hidden" name="profil" value="<?php echo $_POST['profil']?>">
-            <input type="hidden" name="seclanguage" value="<?php echo $_POST['seclanguage']?>">
-		</form>
+        <?php include 'includes/navBar.html'?>
+        <div class="page">
+            <div class="content"><h1 id="order">Wähle deine Fächer</h1>
+                <form id="subjectFrom" action="marks.php" method="post">
+                    <?php
+                        include 'includes/SubjectChooser.php';
+                    ?>
+                    <input type="submit" value="Bestätigen">
+                    <!--Hidden values-->
+                    <input type="hidden" name="absch" value="<?php echo $_POST['absch']?>">
+                    <input type="hidden" name="profil" value="<?php echo $_POST['profil']?>">
+                    <input type="hidden" name="seclanguage" value="<?php echo $_POST['seclanguage']?>">
+                </form>
+            </div>
+        </div>
 	</body>
 </html>

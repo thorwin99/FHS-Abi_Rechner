@@ -17,29 +17,33 @@
 		<script type="text/javascript" src="script/marks.js"></script>
 	</head>
 	<body>
-        <?php include 'includes/navBar.html'?>
 		<!--Includes settings menu-->
 		<?php include 'includes/settingsBar.php';?>
-		<h1>Noteneingabe</h1>
-		<form id="marksForm" action="result.php" method="post">
-			<!--Table with mark fields-->
-            <?php
-                require_once 'includes/profileData.php';
-                switch($_POST['absch']){//Wählt je nach abschluss eine ansdere Tabelle  
-                    case "Abitur":
-                        include 'includes/tabAbi.php';
-                        break;
-                    case "Fachhochschule":
-                        include 'includes/tabFHS.php';
-                        break;
-                    default:
-                        redirect("index.html");
-                        break;
-                }
-            ?>
-            <input type="hidden" name="absch" value="<?php echo $_POST['absch']?>">
-			<input type="hidden" name="profil" value="<?php echo $_POST['profil']?>">
-			<input type="submit" value="Ergebnis">
-		</form>
+        <?php include 'includes/navBar.html'?>
+        <div class="page">
+            <div class="content">
+                <h1>Noteneingabe</h1>
+                <form id="marksForm" action="result.php" method="post">
+                    <!--Table with mark fields-->
+                    <?php
+                        require_once 'includes/profileData.php';
+                        switch($_POST['absch']){//Wählt je nach abschluss eine ansdere Tabelle  
+                            case "Abitur":
+                                include 'includes/tabAbi.php';
+                                break;
+                            case "Fachhochschule":
+                                include 'includes/tabFHS.php';
+                                break;
+                            default:
+                                redirect("index.html");
+                                break;
+                        }
+                    ?>
+                    <input type="hidden" name="absch" value="<?php echo $_POST['absch']?>">
+                    <input type="hidden" name="profil" value="<?php echo $_POST['profil']?>">
+                    <input type="submit" value="Ergebnis">
+                </form>
+            </div>
+        </div>
 	</body>
 </html>
