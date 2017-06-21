@@ -4,10 +4,12 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     onChangeNawiFach();
     onChangeDDAPF();
     onChangeFremdsprachFach();
+    updateTGNawiSelection();
     $("#subjectFrom").submit(submitForm);
     $(".INaWi").change(onChangeNawiFach);
     $("select.APF").change(onChangeDDAPF);
     $(".Fremdsprache.APF").change(onChangeFremdsprachFach);
+    $(".NaWiCheckbox").change(updateTGNawiSelection);
     
     function submitForm(event){
         if($(".NaWiCheckbox").length != 0){//TG ausgewählt, da nur TG Nawicheckbox hat
@@ -23,6 +25,7 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     }
     
     function onChangeNawiFach(event){
+        console.log("change");
         if(!$(".INaWi").length)return;
         var value = $(".Naturwissenschaft.INaWi").val();
         $(".Naturwissenschaft").not(".INaWi").find("option[value=" + value + "]").hide().removeAttr('selected');
@@ -33,10 +36,11 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     function updateTGNawiSelection(){
         if($(".NaWiCheckbox").length != 0){
             var sumOfCheckboxes = $(".NaWiCheckbox:checked").length;
+            if(sumOfCheckboxes == 0){
+                sumOfCheckboxes = 1;
+            }
             $(".NaWiCheckbox").each(function(){
-               if($(this).is(":checked")){
-                   $(this).attr("value", 4/sumOfCheckboxes);
-               } 
+                $(this).attr("value", 4/sumOfCheckboxes);
             });
         }
     }
@@ -48,6 +52,6 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     function onChangeFremdsprachFach(event){
         newVal = $(".Fremdsprache.APF").val();
         otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
-        $(".Fremdsprache").not(".APF").val(otherVals);
+        $(".Fremdsprache").not(".APF").val(otherVal);
     }
 }

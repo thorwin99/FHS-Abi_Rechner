@@ -103,7 +103,7 @@
                         $CountUn++;
                     }
                 }//Summe der anderen Fächer bilden
-                foreach($_POST['pmarks'] as $subject => $mark){
+                foreach($_POST['pmarks'] as $subject => $mark){//Summe der jeweiligen Prüfung bilden.
                     if(isset($_POST['mpmarks'][$subject])){
                         $MpMark = $_POST['mpmarks'][$subject];
                         $thisSum = ceil((4*($mark*+$MpMark)/3));
@@ -120,10 +120,19 @@
                         }
                         $SUMPMarks += $thisSum;
                     }
-                    
-                    
-                }//Summe der jeweiligen Prüfung bilden.
+                }
+                foreach($_POST['mpmarks'] as $subject => $mark){
+                    if(!isset($_POST['pmarks'][$subject])){
+                        $thisSum = ceil((4*$mark));
+                        $PMarksSum[$subject] = $thisSum;
+                        if($thisSum < $MinPMarkSum){
+                            $SUMPunterMinPNotUn++;
+                        }
+                        $SUMPMarks += $thisSum;
+                    }
+                }
                 
+                $gesPoints = round($SUMEMarks + $SUMMarks)/$MarksCount*40);
                 
                 if($SUMNull > 0){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Du hast " . $SUMNull . " mal 0 Punkte. Erlaubt sind 0 mal 0 Punkte.");
@@ -131,14 +140,14 @@
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in e.A. Fächern: " . $SUMEMarks . " von " . $MinEASum);
                 }else if($AllowedUn < $CountUn){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . $CountUn);
-                }else if(round(($SUMEMarks + $SUMMarks)/$MarksCount*40) < $MinMarkSum){
-                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in der Summe: " . round(($SUMEMarks + $SUMMarks)/$MarksCount*40) . " von " . $MinMarkSum);
+                }else if($gesPoints < $MinMarkSum){
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in der Summe: " . $gesPoints . " von " . $MinMarkSum);
                 }else if(!($SUMPunterMinPNotUn < $MinPNotUn)){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Prüfungen unter 5 Punkten");
                 }else if($SUMPMarks < $MinPSum){
                     echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
                 }else{
-                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . ($SUMEMarks + $SUMMarks) . " Punkten, das entspricht einer " . getMarkFromPoints(($SUMEMarks + $SUMMarks), 0));
+                    echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . $gesPoints . " Punkten, das entspricht einer " . getMarkFromPoints($gesPoints, 0));
                     echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
                 }
             }
