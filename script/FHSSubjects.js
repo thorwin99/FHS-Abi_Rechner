@@ -22,7 +22,7 @@ function formSubmit(event){
         }
     });
     if(sumOfSubjects != 3){//Kann nicht absenden.
-        alert("Du musst 3 Fächer auswählen!");
+        alert("Du musst 3 Wahlfächer auswählen!");
         event.preventDefault();
     }else{//Kann absenden
         for(i = 0; i < nullSubjects.length; i++){//Entferne alle Fächer mit 0 Noten eingebracht.
