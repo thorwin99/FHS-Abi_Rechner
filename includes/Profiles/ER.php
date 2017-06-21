@@ -1,5 +1,5 @@
 <?php
-    include 'includes/subjectTableFunctions.php';
+    include_once 'includes/subjectTableFunctions.php';
 
     function loadFHSSubjectChooser(){
         global $EAFER;//Siehe ProfileData.php
