@@ -20,6 +20,25 @@
         }
         return getHTMLObject("select", $attributes, $optionsString);
     }
+    function createCardView($text, array $actions, $title = NULL){
+        $title = ($title == NULL) ? "" : $title;
+        $actionString = "";
+        foreach($actions as $name => $onClick){
+            $actionString = getHTMLObject("span", array("onClick" => $onClick), $name);
+        }
+        $htext = getHTMLObject("p", array(), $text);
+        $htitle = getHTMLObject("span", array("class" => "cardTitle"), $title);
+        $cardBody = getHTMLObject("div", array("class" => "cardBody"), $htitle . $htext);
+        $cardActions = getHTMLObject("div", array("class" => "cardActions"), $actionString);
+        
+        $cardView = "";
+        if(sizeof($actions) == 0){
+            $cardView = getHTMLObject("div", array("class" => "cardView noActions"), $cardBody);
+        }else{
+            $cardView = getHTMLObject("div", array("class" => "cardView"), $cardBody . $cardActions);
+        }
+        return $cardView;
+    }
     function redirect($url){//Leitet den Browser zur url weiter
         
         header("Location: " . $url);

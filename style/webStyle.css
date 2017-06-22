@@ -5,13 +5,15 @@
 /*General*/
 body{
 	background-color: #fafafa;
-	font-family: 'roboto', monospace, arial;
+	font-family: "Roboto", monospace, arial;
+    font-weight: normal;
     color: rgba(0, 0, 0, 0.8);
     margin: 0;
+    font-size: 15px;
 }
 
 .page{
-    width: 100%;
+    width: auto;
     transition: margin-left 0.3s;
 }
 .content{
@@ -37,6 +39,9 @@ body{
 .settingContent{
     padding: 10px;
 }
+.settingBar input[type="submit"]{
+    width: 100%;
+}
 #settingsTitle{
 	
 	margin: 0px;
@@ -58,13 +63,15 @@ select{
 td select{
     width: 100%;
 }
+td{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    /*vertical-align: top;*/
+}
 td input{
     width: 120px;
-}
-td{
-    padding: 3px;
-}
-td input{
 	display: block;
     margin-left: auto;
     margin-right: auto;
@@ -127,6 +134,10 @@ nav{
     cursor: pointer;
     background-color: rgba(0,0,0,0.1);
     transition: color 0.1s ease-in;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 .openSettings:active{
     color: grey;
@@ -162,9 +173,55 @@ nav{
 .overlay{
     width: 100%;
     height: 100%;
-    float: right;
     display: none;
     z-index: 1;
     position: fixed;
+    top: 0;
+    background-color: rgba(0,0,0,0);
     transition: 0.3s;
+}
+
+/*CardView Style*/
+.cardView{
+    width: 425px;
+    display: block;
+    height: auto;
+    margin: 0 5px 0 5px;
+    background-color: #476276;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.cardBody{
+    color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0 0 2px 2px;
+}
+.cardTitle{
+    display: block;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 300;
+}
+.cardView.noActions .cardBody{
+    padding-bottom: 20px;
+}
+.cardActions{
+    border-radius: 0 0 2px 2px;
+    position: relative;
+    border-top: 1px solid rgba(160, 160, 160, 0.2);
+    padding: 16px 20px;
+    color: #ffa700;
+}
+.cardActions span{
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+.cardActions span:hover{
+    color: #ffce71;
 }

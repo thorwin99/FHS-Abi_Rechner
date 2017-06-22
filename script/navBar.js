@@ -10,7 +10,7 @@ function isReady(){
             case 0:
                 $(".settingBar").css("transform", "translateX(0%)");
                 $(".page").css("margin-left", "200px");
-                $(".overlay").show().css("background-color", "rgba(0,0,0,0.5)");
+                $(".overlay").show(0).css("background-color", "rgba(0,0,0,0.5)");
                 rotateSettingsWheel(-360);
                 state = 1;
                 break;
@@ -30,9 +30,11 @@ function isReady(){
             case 0:
                 break;
             case 1:
-                $(".settingBar").css("width", "0");
+                $(".settingBar").css("transform", "translateX(-100%)");
                 $(".page").css("margin-left", "0");
-                $(".overlay").css("background-color", "rgba(0,0,0,0)").hide(300);
+                $(".overlay").css("background-color", "rgba(0,0,0,0)");
+                $(".overlay").hide(300);
+                rotateSettingsWheel(360);
                 state = 0;
                 break;
             default:

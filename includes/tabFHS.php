@@ -1,10 +1,12 @@
 <?php
     require_once 'includes/htmlObjectFunctions.php';
     $table = "";
+    addTableHeader($table);
     addEAMarks($table);
     addPSubjectMarks($table);
     addWSubjectMarks($table);
     
+    echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
     echo getHTMLObject("table", array(), $table);
 
     /*
@@ -48,5 +50,13 @@
             
             
         }
+    }
+
+    function addTableHeader(&$table){
+        $headtr = getHTMLObject("th", array(), "Fach");
+        for($i = 1; $i <= 2; $i++){
+            $headtr = $headtr . getHTMLObject("th", array(), $i . ".");
+        }
+        $table = $table . getHTMLObject("tr", array(), $headtr);
     }
 ?>

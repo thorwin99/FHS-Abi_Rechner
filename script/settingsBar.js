@@ -11,9 +11,9 @@ function isReady(){
     function changeProf(){
         var value = $("#profil").val();
         if(value == "GE" || value == "WL"){
-            $("#language").css("display", "block");
+            $(".language").show();
         }else{
-            $("#language").css("display", "none");
+            $(".language").hide();
         }
     }
 }
