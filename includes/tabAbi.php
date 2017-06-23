@@ -8,7 +8,6 @@
     addPVSubject($table);
     addSubjects($table);
 
-    echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
     echo getHTMLObject("table", array(), $table);
 
     function addEASubjects(&$table){
