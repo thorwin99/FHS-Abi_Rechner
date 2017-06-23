@@ -6,7 +6,8 @@
     addPSubjectMarks($table);
     addWSubjectMarks($table);
     
-    echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
+    echo getHTMLObject("h1", array(), "Noteneingabe");
+    //echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
     echo getHTMLObject("table", array(), $table);
 
     /*
@@ -55,7 +56,7 @@
     function addTableHeader(&$table){
         $headtr = getHTMLObject("th", array(), "Fach");
         for($i = 1; $i <= 2; $i++){
-            $headtr = $headtr . getHTMLObject("th", array(), $i . ".");
+            $headtr = $headtr . getHTMLObject("th", array(), $i . ". Note");
         }
         $table = $table . getHTMLObject("tr", array(), $headtr);
     }

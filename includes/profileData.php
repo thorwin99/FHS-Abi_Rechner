@@ -67,29 +67,45 @@
     $APFWLDE = array($_SUBJ['Ma'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Wirtschaft Deutsch
     $APFWLEN = array($_SUBJ['Ma'], $_SUBJ['De']);//Prüfungsfächer Wirtschaft Englisch
     
-    $P5Array = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. 
+    $P5GEDE = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Gesundheit Deutsch
+    $P5GEEN = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Gesundheit Englisch
+    $P5TE = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Technik
+    $P5ER = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Ernährung
+    $P5WLDE = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Wirtschaft Deutsch
+    $P5WLEN = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Wirtschaft Englisch
 
     $IVFGEDE = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Ge']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Deutsch
     $IVFGEEN = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Erz']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Englisch
     $IVFTE = array($_SUBJ['Gmk']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Technik
     $IVFER = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Ernährung
     $IVFWLDE = array($_SUBJ['Vwl'], $_SUBJ['Rl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Deutsch
-    $IVFWLEN = array($_SUBJ['Bwl'], "WlWahl" => array($_SUBJ['Wge'], $_SUBJ['Rl']));//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Englisch
+    $IVFWLEN = array($_SUBJ['Bwl'], $_SUBJ['Rl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Englisch
 
-    $IIFGE = array("KuLiMu" => $KULIMU);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Gesundheit
-    $IIFTE = array("KuLiMu" => $KULIMU, $_SUBJ['Wl']);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Technik
-    $IIFER = array("KuLiMu" => $KULIMU);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Ernährung
-    $IIFWL = array("KuLiMu" => $KULIMU, $_SUBJ['Gmk']);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Wirtschaft
+    $IIFGE = array("Kulturfach" => $KULIMU);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Gesundheit
+    $IIFTE = array("Kulturfach" => $KULIMU, $_SUBJ['Wl']);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Technik
+    $IIFER = array("Kulturfach" => $KULIMU);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Ernährung
+    $IIFWL = array("Kulturfach" => $KULIMU, $_SUBJ['Gmk']);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Wirtschaft
 
-    $NAFGE = array();//1. Nawi Gesundheit
+    $NAFGEDE = array();//1. Nawi Gesundheit Deutsch
+    $NAFGEEN = array();//1. Nawi Gesundheit Englisch
     $NAFTE = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']));//1. Nawi Technik
     $NAFER = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio']));//1. Nawi Ernährung
-    $NAFWL = array($_SUBJ['Phy']);//1. Nawi Wirtschaft
+    $NAFWLDE = array($_SUBJ['Phy']);//1. Nawi Wirtschaft Deutsch
+    $NAFWLEN = array($_SUBJ['Phy']);//1. Nawi Wirtschaft Englisch
 
-    $NAGE = array("Naturwissenschaft" => array($_SUBJ['Bio'], $_SUBJ['Bin']));//2. Nawi Gesundheit
+    $NAGEDE = array("Naturwissenschaft" => array($_SUBJ['Bio'], $_SUBJ['Bin']));//2. Nawi Gesundheit Deutsch
+    $NAGEEN = array("Naturwissenschaft" => array($_SUBJ['Bio'], $_SUBJ['Bin']));//2. Nawi Gesundheit Englisch
     $NATE = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Phy']), $_SUBJ['Bin']);//2. Nawi Technik
     $NAER = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio'], $_SUBJ['Bin']));//2. Nawi Ernährung
-    $NAWL = array();//2. Nawi Wirtschaft
+    $NAWLDE = array();//2. Nawi Wirtschaft Deutsch
+    $NAWLEN = array();//2. Nawi Wirtschaft Englisch
+
+    $WFGEDE = array();//Wahlfächer Gesundheit Deutsch
+    $WFGEEN = array();//Wahlfächer Gesundheit Englisch
+    $WFTE = array();//Wahlfächer Technik
+    $WFER = array();//Wahlfächer Ernährung
+    $WFWLDE = array();//Wahlfächer Wirtschaft Deutsch
+    $WFWLEN = array();//Wahlfächer Wirtschaft Englisch
 
     function loadCSVToArray($FileName, &$array){
         $fileHandler = fopen($FileName, "r");//Öffnet die datei $fileName als readonly.

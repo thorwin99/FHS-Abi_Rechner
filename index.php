@@ -11,54 +11,58 @@
 	</head>
 	<body>
         <?php include 'includes/navBar.html'?>
-		<h1 id="order">Wilkommen zum Abschlussrechner</h1>
-		<form id="form" action="chooseSubjects.php" method="post">
-            <table>
-                <tr id="absch">
-                    <td>
-                        <label>Wähle den Abschluss</label>
-                        <select id="abschSelect" name="absch">
-                            <option value="Abitur">Abitur</option>
-				            <option value="Fachhochschule">Fachhochschule</option>
-			             </select>
-                    </td>
-                
-                </tr>
-                <tr id="profil">
-                    <td>
-                        <label>Wähle das Profil</label>
-                        <select id="profilSelect" name="profil">
-				            <option value="GE">Gesundheit und Soziales</option>
-				            <option value="ER">Ernährung</option>
-				            <option value="TE">Technik</option>
-				            <option value="WL">Wirtschaft</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="seclanguage">
-                    <td>
-                        <label>Wähle die 2. Fremdsprache</label>
-                        <select id="seclanguageSelect" name="seclanguage">
-                            <option value="Französisch">Französisch</option>
-                            <option value="Spanisch">Spanisch</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr id="language">
-                    <td>
-                        <label>Wähle die Fachsprache</label>
-                        <select id="languageSelect" name="language">
-                            <option value="DE">Deutsch</option>
-                            <option value="EN">Englisch</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit" value="Bestätigen">Bestätigen</button>
-                    </td>
-                </tr>
-            </table>
-		</form>
+        <div class="page">
+            <div class="content">
+                <h1 id="order">Wilkommen zum Abschlussrechner</h1>
+                <form id="form" action="chooseSubjects.php" method="post">
+                    <table>
+                        <tr id="absch">
+                            <td>
+                                <label>Wähle den Abschluss</label>
+                                <select id="abschSelect" name="absch">
+                                    <option value="Abitur">Abitur</option>
+                                    <option value="Fachhochschule">Fachhochschule</option>
+                                 </select>
+                            </td>
+
+                        </tr>
+                        <tr id="profil">
+                            <td>
+                                <label>Wähle das Profil</label>
+                                <select id="profilSelect" name="profil">
+                                    <option value="GE">Gesundheit und Soziales</option>
+                                    <option value="ER">Ernährung</option>
+                                    <option value="TE">Technik</option>
+                                    <option value="WL">Wirtschaft</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="seclanguage">
+                            <td>
+                                <label>Wähle die 2. Fremdsprache</label>
+                                <select id="seclanguageSelect" name="seclanguage">
+                                    <option value="Französisch">Französisch</option>
+                                    <option value="Spanisch">Spanisch</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id="language">
+                            <td>
+                                <label>Wähle die Fachsprache</label>
+                                <select id="languageSelect" name="language">
+                                    <option value="DE">Deutsch</option>
+                                    <option value="EN">Englisch</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" value="Bestätigen">Bestätigen</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
 	</body>
 </html>

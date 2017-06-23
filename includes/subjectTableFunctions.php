@@ -7,7 +7,7 @@
     $CVTitleSubjects ="Pflichtfächer";
     $CVTitleNaWi = "Naturwissenschaften";
     $CVTextPFs = "Gebe hier deine Plichtfächer an, die du wählen möchtest.";
-    $CVTextWFs = "Wähle hier 3 Fächer aus. Du kannst auch ein Fach 2 mal nehmen.";
+    $CVTextWFs = "Wähle hier 3 Fächer aus. Du kannst auch ein Fach zwei mal nehmen.";
     $CVTextPSubjects = "Wähle hier die mündlichen Prüfungen sowie das 5. Prüfungsfach.";
     $CVTextSubjects = "Wähle hier deine Pflichtfächer.";
     $CVTextNaWi = "Wähle hier die 1. und/oder 2. Naturwissenschaft aus.";
@@ -199,5 +199,37 @@
         $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache"), "");
         $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
         echo $HiddenLabel . $HiddenAmountField;
+    }
+
+    function loadWSubjects($wsubj){
+        global $CVOnClick;
+        global $CVTextWFs;
+        global $CVTitleWFs;
+        global $CVCloseBtn;
+        $table = "";
+        $CardTD = "";
+        if(sizeof($wsubj) != 0){
+            $table = $table . getHTMLObject("h3", array(), "Wahlfächer");
+        }
+        foreach($wsubj as $key => $Subject){
+            if(gettype($Subject) == "array"){
+                $Dropdown = getDropdownList("subj[]", array("class" => $key), $Subject);
+                $TLabel = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
+                $TCount = getHTMLObject("td", array(), $CountField);
+                $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
+            }else{
+                $THiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $Subject), "");
+                $TLabel = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $THiddenLabel);
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
+                $TCount = getHTMLObject("td", array(), $CountField);
+                $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
+            }
+        }
+        if($table != ""){//Wenn es überhaubt diese Tabellenspalte gibt, wird eine Hilfe cardview erstellt
+            $CardTD = createCardView($CVTextWFs, array($CVCloseBtn => $CVOnClick), $CVTitleWFs);
+        }
+        $tableTD = getHTMLObject("table", array(), $table);
+        return getHTMLObject("tr", array(), getHTMLObject("td", array(), $tableTD) . getHTMLObject("td", array(), $CardTD));//Gibt die TR zurück ans Hauptscript des Profils
     }
 ?>

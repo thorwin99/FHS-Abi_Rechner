@@ -13,6 +13,8 @@ body{
 }
 
 .page{
+    position: absolute;
+    margin-top: 64px;
     width: auto;
     transition: margin-left 0.3s;
 }
@@ -79,15 +81,16 @@ td input{
 
 /*Button Styles*/
 button, input[type=submit]{
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
     background-color: #868686;
     color: white;
     text-align: center;
-    letter-spacing: .5px;
     border: none;
     border-radius: 2px;
-    height: 25px;
-    line-height: 25px;
-    padding: 0 1rem;
+    height: 33px;
+    line-height: 33px;
+    padding: 0 2rem;
     margin-top: 2px;
     text-transform: uppercase;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
@@ -102,23 +105,24 @@ button:active, input[type=submit]:active{
     cursor: pointer;
     background-color: #bbb;
     transition: .3s ease-out;
+    box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 /*Navigation bar style*/
 nav{
     transition: margin-left 0.3s;
     height: 64px;
+    position: fixed;
     color: white;
-    width: auto;
+    width: 100%;
     display: block;
     box-sizing: inherit;
     background-color: #1a237e;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
     margin-left: 0px;
     z-index: 3;
 }
 .navBar{
-    position: relative;
     height: 100%;
     box-sizing: inherit;
 }
@@ -176,7 +180,6 @@ nav{
     display: none;
     z-index: 1;
     position: fixed;
-    top: 0;
     background-color: rgba(0,0,0,0);
     transition: 0.3s;
 }

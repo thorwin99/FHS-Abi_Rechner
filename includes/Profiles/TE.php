@@ -19,21 +19,23 @@
     function loadAbiSubjectChooser(){
         global $EAFTE;
         global $APFTE;
-        global $P5Array;
+        global $P5TE;
         global $IVFTE;
         global $IIFTE;
         global $NAFTE;
         global $NATE;
+        global $WFTE;
         global $LANGUAGES;
         array_push($LANGUAGES, $_POST['seclanguage']);//Fügt die 2. Fremdsprache zu der anderen hinzu
         
-        $PSubjects = loadPSubjects($EAFTE, $APFTE, $P5Array);
+        $PSubjects = loadPSubjects($EAFTE, $APFTE, $P5TE);
         $Subjects = loadSubjects($IVFTE, "IVF", 4);
         $SubjectsII = loadSubjects($IIFTE, "IIF", 2);
         $NaWi = loadNaWiSubjectsTG($NAFTE, $NATE);
+        $WSubjects = loadWSubjects($WFTE);
         loadSecLanguage($_POST['seclanguage']);
         
-        echo getHTMLObject("table", array(), $PSubjects . $Subjects . $SubjectsII . $NaWi);
+        echo getHTMLObject("table", array(), $PSubjects . $Subjects . $SubjectsII . $NaWi . $WSubjects);
     }
 
     function loadNaWiSubjectsTG($NAF, $NA){
@@ -76,7 +78,7 @@
             $FachTD = $FachTD . getHTMLObject("table", array(), $table);
         }
          if($FachTD != ""){//Wenn es überhaubt diese Tabellenspalte gibt, wird eine Hilfe cardview erstellt
-            $CardTD = createCardView($CardText, array("Ok" => "$(this).parent().parent().hide(500)"), "Naturwissenschaften");
+            $CardTD = createCardView($CardText, array("Schließen" => "$(this).parent().parent().hide(500)"), "Naturwissenschaften");
         }
         return getHTMLObject("tr", array(), getHTMLObject("td", array(), $FachTD) . getHTMLObject("td", array(), $CardTD));//Gibt die TR zurück ans Hauptscript des Profils
     }

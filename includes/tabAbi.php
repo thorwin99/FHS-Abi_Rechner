@@ -8,7 +8,8 @@
     addPVSubject($table);
     addSubjects($table);
 
-    echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
+    echo getHTMLObject("h1", array(), "Noteneingabe");
+    //echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
     echo getHTMLObject("table", array(), $table);
 
     function addEASubjects(&$table){
@@ -82,7 +83,7 @@
     function addTableHeader(&$table){
         $headtr = getHTMLObject("th", array(), "Fach");
         for($i = 1; $i <= 4; $i++){
-            $headtr = $headtr . getHTMLObject("th", array(), $i . ".");
+            $headtr = $headtr . getHTMLObject("th", array(), $i . ". Note");
         }
         $headtr = $headtr . getHTMLObject("th", array(), "Prüfung") . getHTMLObject("th", array(), "Mündliche");
         $table = $table . getHTMLObject("tr", array(), $headtr);

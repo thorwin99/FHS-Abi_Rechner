@@ -19,20 +19,22 @@
     function loadAbiSubjectChooser(){
         global $EAFWLDE;
         global $APFWLDE;
-        global $P5Array;
+        global $P5WLDE;
         global $IVFWLDE;
         global $IIFWL;
-        global $NAFWL;
-        global $NAWL;
+        global $NAFWLDE;
+        global $NAWLDE;
+        global $WFWLDE;
         global $LANGUAGES;
         array_push($LANGUAGES, $_POST['seclanguage']);//Fügt die 2. Fremdsprache zu der anderen hinzu
         
-        $PSubjects = loadPSubjects($EAFWLDE, $APFWLDE, $P5Array);
+        $PSubjects = loadPSubjects($EAFWLDE, $APFWLDE, $P5WLDE);
         $Subjects = loadSubjects($IVFWLDE, "IVF", 4);
         $SubjectsII = loadSubjects($IIFWL, "IIF", 2);
-        $NaWi = loadNaWiSubjects($NAFWL, $NAWL);
+        $NaWi = loadNaWiSubjects($NAFWLDE, $NAWLDE);
+        $WSubjects = loadWSubjects($WFWLDE);
         loadSecLanguage($_POST['seclanguage']);
         
-        echo getHTMLObject("table", array(), $PSubjects . $Subjects . $SubjectsII . $NaWi);
+        echo getHTMLObject("table", array(), $PSubjects . $Subjects . $SubjectsII . $NaWi . $WSubjects);
     }
 ?>

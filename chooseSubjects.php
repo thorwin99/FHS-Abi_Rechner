@@ -29,7 +29,8 @@
         <?php include 'includes/settingsBar.php';?>
         <?php include 'includes/navBar.html'?>
         <div class="page">
-            <div class="content"><h1 id="order">Wähle deine Fächer</h1>
+            <div class="content">
+                <h1 id="order">Wähle deine Fächer</h1>
                 <form id="subjectFrom" action="marks.php" method="post">
                     <?php
                         include 'includes/SubjectChooser.php';
