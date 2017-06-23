@@ -14,7 +14,7 @@ body{
 
 .page{
     position: absolute;
-    margin-top: 64px;
+    margin-top: 50px;
     width: auto;
     transition: margin-left 0.3s;
 }
@@ -125,7 +125,7 @@ nav{
     width: 100%;
     display: block;
     box-sizing: inherit;
-    background-color: #1a237e;
+    background-color: #3949ab;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
     margin-left: 0px;
     z-index: 3;
