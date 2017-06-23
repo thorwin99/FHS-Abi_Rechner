@@ -25,6 +25,12 @@
         ?>
 	</head>
 	<body>
+        <!--Noscript Redirect to enable-javascript.com if it isnt activated-->
+        <noscript>
+            AKTIVIERE JAVASCRIPT!!!
+            <style>html{display:none;}</style>
+            <meta http-equiv="refresh" content="0.0;url=http://www.enable-javascript.com/">
+        </noscript>
         <!--Include settingsBar-->
         <?php include 'includes/settingsBar.php';?>
         <?php include 'includes/navBar.html'?>

@@ -10,6 +10,11 @@
 		<script type="text/javascript" src="script/index.js"></script>
 	</head>
 	<body>
+        <noscript>
+            AKTIVIERE JAVASCRIPT!!!
+            <style>html{display:none;}</style>
+            <meta http-equiv="refresh" content="0.0;url=http://www.enable-javascript.com/">
+        </noscript>
         <?php include 'includes/navBar.html'?>
         <div class="page">
             <div class="content">

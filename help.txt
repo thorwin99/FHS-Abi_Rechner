@@ -1,4 +1,4 @@
-Schlüsselwörter PHP
+---Schlüsselwörter PHP---
 global: Wenn innerhalb einer Funktion eine variable definiert ist, ist diese innerhalb der variable wichtiger als eine die den gleichen Namen außerhalb trägt. Wenn man nun in der Funktion die variable mit dem Wort global versieht, wird der wert der äußeren übernommen
 bspl: 
 $var1 = 5;
@@ -12,6 +12,8 @@ include_once/require_once: kopiert den Inhalt der Datein an die angegebene Stell
 ceil($var): Rundet $var auf
 floor($var): Rundet $var ab
 
+---Dateien---
+
 name.csv: Eine CSV datei, welche eine Tabelle abspeichert. Diese kann in PHP gelesen werden.
 
 Ordnerstruktur: 
@@ -23,3 +25,6 @@ Ordnerstruktur:
 index.html: leitet dich auf index.php weiter.
 index.php: Die Hauptseite der Website.
 chooseSubjects: Die Seite, wo man seine Fächer auswählt.
+
+---HTML---
+<noscript>: Alles, was sich darin befindet, wird angezeigt, wenn der Nutzer kein Javascript aktiviert hat.
