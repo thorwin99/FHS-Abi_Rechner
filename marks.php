@@ -22,7 +22,6 @@
         <?php include 'includes/navBar.html'?>
         <div class="page">
             <div class="content">
-                <h1>Noteneingabe</h1>
                 <form id="marksForm" action="result.php" method="post">
                     <!--Table with mark fields-->
                     <?php
