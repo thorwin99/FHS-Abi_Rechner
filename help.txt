@@ -12,4 +12,14 @@ include_once/require_once: kopiert den Inhalt der Datein an die angegebene Stell
 ceil($var): Rundet $var auf
 floor($var): Rundet $var ab
 
+name.csv: Eine CSV datei, welche eine Tabelle abspeichert. Diese kann in PHP gelesen werden.
+
+Ordnerstruktur: 
+    -csv: Alle CSV Dateien für tabellen, wie die Notentabellen.
+    -includes: Alle Dateien, die wiederum in anderen Dateien eingebunden sind.
+    -script: Alle Javascript dateien.
+    -style: Die CSS Dateien.
+
 index.html: leitet dich auf index.php weiter.
+index.php: Die Hauptseite der Website.
+chooseSubjects: Die Seite, wo man seine Fächer auswählt.

@@ -7,7 +7,7 @@ body{
 	background-color: #fafafa;
 	font-family: "Roboto", monospace, arial;
     font-weight: normal;
-    color: rgba(0, 0, 0, 0.8);
+    color: #263238;
     margin: 0;
     font-size: 15px;
 }
@@ -20,6 +20,13 @@ body{
 }
 .content{
     padding: 20px;
+}
+
+.notSelectable{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 /*Settings Bar Styles*/
@@ -83,14 +90,15 @@ td input{
 button, input[type=submit]{
     letter-spacing: 0.5px;
     font-size: 0.9rem;
-    background-color: #868686;
+    background-color: #455a64;
     color: white;
     text-align: center;
     border: none;
     border-radius: 2px;
-    height: 33px;
-    line-height: 33px;
-    padding: 0 2rem;
+    height: 36px;
+    line-height: 36px;
+    min-width: 64px;
+    padding: 0 16px;
     margin-top: 2px;
     text-transform: uppercase;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
@@ -98,12 +106,12 @@ button, input[type=submit]{
 }
 button:hover, input[type=submit]:hover{
     cursor: pointer;
-    background-color: #aaa;
+    background-color: #718792;
     transition: .3s ease-out;
 }
 button:active, input[type=submit]:active{
     cursor: pointer;
-    background-color: #bbb;
+    background-color: #1c313a;
     transition: .3s ease-out;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
 }
@@ -137,14 +145,11 @@ nav{
     display: inline-block;
     cursor: pointer;
     background-color: rgba(0,0,0,0.1);
+    color: #fafafa;
     transition: color 0.1s ease-in;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
 }
 .openSettings:active{
-    color: grey;
+    color: #c7c7c7;
 }
 .logo{
     position: absolute;
@@ -190,7 +195,7 @@ nav{
     display: block;
     height: auto;
     margin: 0 5px 0 5px;
-    background-color: #476276;
+    background-color: #455a64;
     position: relative;
     border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
@@ -217,14 +222,17 @@ nav{
     position: relative;
     border-top: 1px solid rgba(160, 160, 160, 0.2);
     padding: 16px 20px;
-    color: #ffa700;
+    color: #ffa000;
 }
 .cardActions span{
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 8px;
+    margin-right: 8px;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
 }
 .cardActions span:hover{
-    color: #ffce71;
+    color: #ffc149;
+}
+.cardActions span:active{
+    color: #c67100;
 }

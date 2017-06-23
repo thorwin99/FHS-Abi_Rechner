@@ -29,7 +29,7 @@
         $htext = getHTMLObject("p", array(), $text);
         $htitle = getHTMLObject("span", array("class" => "cardTitle"), $title);
         $cardBody = getHTMLObject("div", array("class" => "cardBody"), $htitle . $htext);
-        $cardActions = getHTMLObject("div", array("class" => "cardActions"), $actionString);
+        $cardActions = getHTMLObject("div", array("class" => "cardActions notSelectable"), $actionString);
         
         $cardView = "";
         if(sizeof($actions) == 0){
