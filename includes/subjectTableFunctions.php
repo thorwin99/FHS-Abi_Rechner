@@ -8,7 +8,7 @@
     $CVTitleNaWi = "Naturwissenschaften";
     $CVTextPFs = "Gebe hier deine Plichtfächer an, die du wählen möchtest.";
     $CVTextWFs = "Wähle hier 3 Fächer aus. Du kannst auch ein Fach zwei mal nehmen.";
-    $CVTextWSubjects = "Wähle hier 6 Fächer aus. Du kannst auch ein Fach zwei mal nehmen oder überhaubt keines wählen.";
+    $CVTextWSubjects = "Wähle hier maximal 6 Noten aus, die du einbringen möchtest.";
     $CVTextPSubjects = "Wähle hier die mündlichen Prüfungen sowie das 5. Prüfungsfach.";
     $CVTextSubjects = "Wähle hier deine Pflichtfächer.";
     $CVTextNaWi = "Wähle hier die 1. und/oder 2. Naturwissenschaft aus.";
