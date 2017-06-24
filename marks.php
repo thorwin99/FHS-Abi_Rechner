@@ -3,18 +3,19 @@
 		<title>
 			<?php
             require_once 'includes/htmlObjectFunctions.php';
-			if(!isset($_POST['absch'])){
-				redirect("index.html");
+			if(!isset($_POST['absch'])){//Wenn die Seite geladen wird, ohne dass $_POST['absch'] gesetzt ist, weiterleitung auf index.php
+				redirect("index.php");
 			}
-            header("Cache-Control: no-cache, must-revalidate, max-age=0");
-			echo $_POST['absch'] . " Rechner"
+            //Zwinge den Browser die Seite nicht in den Cache zu laden, um Fehler zu vermeiden.
+            header("Cache-Control: no-cache, no-store, must-revalidate");
+            header("Pragma: no-cache");
+            header("Expires: 0");
+            //Der titel der seite wird auf Abschluss + Rechner - Seite gesetzt
+			echo $_POST['absch'] . " Rechner - Noteneingabe";
 			?>
 		</title>
 		 <meta charset="UTF-8"> 
 		<link rel="stylesheet" type="text/css" href="style/webStyle.css">
-		<!-- load jQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="script/marks.js"></script>
 	</head>
 	<body>
         <!--Noscript Redirect to enable-javascript.com if it isnt activated-->

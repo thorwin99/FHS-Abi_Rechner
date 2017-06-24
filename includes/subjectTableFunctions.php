@@ -8,6 +8,7 @@
     $CVTitleNaWi = "Naturwissenschaften";
     $CVTextPFs = "Gebe hier deine Plichtfächer an, die du wählen möchtest.";
     $CVTextWFs = "Wähle hier 3 Fächer aus. Du kannst auch ein Fach zwei mal nehmen.";
+    $CVTextWSubjects = "Wähle hier 6 Fächer aus. Du kannst auch ein Fach zwei mal nehmen oder überhaubt keines wählen.";
     $CVTextPSubjects = "Wähle hier die mündlichen Prüfungen sowie das 5. Prüfungsfach.";
     $CVTextSubjects = "Wähle hier deine Pflichtfächer.";
     $CVTextNaWi = "Wähle hier die 1. und/oder 2. Naturwissenschaft aus.";
@@ -23,12 +24,16 @@
     Bei einem Array wird eine Dropdownliste mit der Klasse des Keys ind einer ID FPF, für JS ausgegeben
     */
     function loadPFs(array $PF){
+        //Globale Werte (Siehe Oben)
         global $CVOnClick;
         global $CVTextPFs;
         global $CVTitlePFs;
         global $CVCloseBtn;
+        
+        //TD Strings
         $FachTD = "";
         $CardTD = "";
+        //Lädt alle vorgegebenen Fächer, wenn Array, in die $FachTD
         foreach($PF as $key => $Subject){
             if(gettype($Subject) == "array"){//Wenn das momentane PF ein array ist, dann kann man wählen
                 $Dropdown = getDropdownList("psubj[]", array("class" => $key, "id" => "FPF"), $Subject);//Die Klasse der Dropdown Liste ist der Key des Arrays, für spätere JS anwendung
@@ -50,13 +55,18 @@
     Zudem wird in dem Label ein verstecktes Input feld gesetzt, um den Namen des Faches zu übergeben (subj)
     */
     function loadWFs(array $WF){
+        //Globale Werte (Siehe Oben)
         global $CVOnClick;
         global $CVTextWFs;
         global $CVTitleWFs;
         global $CVCloseBtn;
+        
+        //TD Strings
         $table = "";
         $CardTD = "";
         $table = $table . getHTMLObject("h3", array(), "Wahlfächer");
+        
+        //Lädt alle Wahlfächer, in die $table (Table in TD)
         foreach($WF as $key => $Subject){
             if(gettype($Subject) == "array"){
                 $Dropdown = getDropdownList("subj[]", array("class" => $key), $Subject);
@@ -85,13 +95,18 @@
     Übergeben werden mündliche noten als mdlPrf[Fach].
     */
     function loadPSubjects($EAF, $APF, $P5Array){
+        //Gobale Werte(Siehe Oben)
         global $CVOnClick;
         global $CVTextPSubjects;
         global $CVTitlePSubjects;
         global $CVCloseBtn;
+        
+        //TD Strings
         $table = "";
         $CardTD = "";
+        //Der Titel der TD
         $Title = getHTMLObject("h3", array(), "Mündliche Prüfungen");
+        //Lädt die e.A. Fächer in die $table
         foreach($EAF as $EASubject){
             $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "easubj[]", "value" => $EASubject), "");
             $Label = getHTMLObject("td", array("class" => "subjectLabel"), $EASubject . $HiddenLabel);
@@ -99,6 +114,7 @@
             $TdCheck = getHTMLObject("td", array(), $Checkbox);
             $table = $table . getHTMLObject("tr", array(), $Label . $TdCheck);
         }
+        //Lädt die anderen Prüfungsfächer in die $table. Falls array, dann mit Dropdown als label
         foreach($APF as $key => $Subject){
             if(gettype($Subject) == "array"){
                 $Dropdown = getDropdownList("psubj[]", array("class" => $key . " APF"), $Subject);
@@ -121,7 +137,7 @@
         return getHTMLObject("tr", array(), getHTMLObject("td", array(), $Title . $tableTD) . getHTMLObject("td", array(), $CardTD));//Gibt die TR zurück ans Hauptscript des Profils
     }
     /*
-    Lädt das P5 Fach
+    Lädt das P5 Fach als Dropdown
     */
     function loadP5DropDown($P5Array){
         $Title = getHTMLObject("h4", array(), "5. Prüfungsfach (mündlich)");
@@ -129,16 +145,22 @@
         return $Title . $Dropdown;
     }
     /*Lädt alle anderen Fächer als verstecktes Feld, es sei denn es ist ein array, dann dropdown
+    $type: Der typ. Kann IIF oder IVF sein, also 2 mal oder 4 mal eingebracht werden müssen
+    $amount: Die Anzahl, wie oft die Fächer eingebracht werden müssen
     */
     function loadSubjects($FER, $type, $amount){
+        //Gobale Werte(Siehe Oben)
         global $CVOnClick;
         global $CVTextSubjects;
         global $CVTitleSubjects;
         global $CVCloseBtn;
+        
+        //TD Strings
         $FachTD = "";
+        //Lädt die anderen Vorgegebenen Fächer in $FachTD
         foreach($FER as $key => $Subject){
             if(gettype($Subject) == "array"){
-                $FachTD = $FachTD . getHTMLObject("h3", array(), $key);
+                $FachTD = $FachTD . getHTMLObject("h3", array(), $key);//Titel für das Dropdown menu (Meistens nur Kulturfächer)
                 $Dropdown = getDropdownList("subj[]", array("class" => $key . " " . $type), $Subject);
                 $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => $amount), "");
                 $FachTD = $FachTD . $Dropdown . $HiddenAmountField;
@@ -154,12 +176,16 @@
     Die anzahl der noten für jedes Fach werden in subjamount[] übergeben. der index aus subj[] ist identisch mit dem aus subjamount[]
     */
     function loadNaWiSubjects($NAF, $NA){
+        //Gobale Werte(Siehe Oben)
         global $CVOnClick;
         global $CVTextNaWi;
         global $CVTitleNaWi;
         global $CVCloseBtn;
+        
+        //TD Strings
         $FachTD = "";
         $CardTD = "";
+        //Wenn überhaubt ein 1. Nawifach gewählt wird.
         if(sizeof($NAF) != 0){
             foreach($NAF as $key => $Subject){
                 if(gettype($Subject) == "array"){
@@ -175,10 +201,16 @@
                 }
             }
         }
+        //Wenn überhaubt eine 2. gewählt wird.
         if(sizeof($NA) != 0){
             foreach($NA as $key => $Subject){
                 if(gettype($Subject) == "array"){
-                    $FachTD = $FachTD . getHTMLObject("h4", array(), "2. Naturwissenschaft");
+                    if(sizeof($NAF) != 0){//Wenn die 1. Nicht gewählt wird, Muss noch ein anders Label erzeugt werden.
+                        $FachTD = $FachTD . getHTMLObject("h4", array(), "2. Naturwissenschaft");
+                    }else{
+                        $FachTD = $FachTD . getHTMLObject("h3", array(), "Naturwissenschaften");
+                        $FachTD = $FachTD . getHTMLObject("h4", array(), "1. Naturwissenschaft"); 
+                    }
                     $Dropdown = getDropdownList("subj[]", array("class" => $key . " IINaWi"), $Subject);
                     $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
                     $FachTD = $FachTD . $Dropdown . $HiddenAmountField;
@@ -201,33 +233,40 @@
         echo $HiddenLabel . $HiddenAmountField;
     }
 
+    /*Lädt die Wahlfächer als Tabelle mit Titel/Dropdown und Auswahl, wie oft das Fach eingebracht wird.
+    */
     function loadWSubjects($wsubj){
+        //Gobale Werte(Siehe Oben)
         global $CVOnClick;
-        global $CVTextWFs;
+        global $CVTextWSubjects;
         global $CVTitleWFs;
         global $CVCloseBtn;
+        
+        //TD Strings
         $table = "";
         $CardTD = "";
+        //Wenn überhaubt Wahlfächer vorhanden sind. Sonst kein Titel.
         if(sizeof($wsubj) != 0){
             $table = $table . getHTMLObject("h3", array(), "Wahlfächer");
         }
+        //Fügt die Wahlfächer zu $table hinzu (siehe FHS loadWFs)
         foreach($wsubj as $key => $Subject){
             if(gettype($Subject) == "array"){
                 $Dropdown = getDropdownList("subj[]", array("class" => $key), $Subject);
                 $TLabel = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
-                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 4, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
                 $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
             }else{
                 $THiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $Subject), "");
                 $TLabel = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $THiddenLabel);
-                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 2, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
+                $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 4, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
                 $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
             }
         }
         if($table != ""){//Wenn es überhaubt diese Tabellenspalte gibt, wird eine Hilfe cardview erstellt
-            $CardTD = createCardView($CVTextWFs, array($CVCloseBtn => $CVOnClick), $CVTitleWFs);
+            $CardTD = createCardView($CVTextWSubjects, array($CVCloseBtn => $CVOnClick), $CVTitleWFs);
         }
         $tableTD = getHTMLObject("table", array(), $table);
         return getHTMLObject("tr", array(), getHTMLObject("td", array(), $tableTD) . getHTMLObject("td", array(), $CardTD));//Gibt die TR zurück ans Hauptscript des Profils

@@ -52,7 +52,7 @@
             
         }
     }
-
+    
     function addTableHeader(&$table){
         $headtr = getHTMLObject("th", array(), "Fach");
         for($i = 1; $i <= 2; $i++){

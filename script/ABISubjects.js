@@ -10,6 +10,7 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     $("select.APF").change(onChangeDDAPF);
     $(".Fremdsprache.APF").change(onChangeFremdsprachFach);
     $(".NaWiCheckbox").change(updateTGNawiSelection);
+    $(".CountField").change(onChangeCountNumber);//Wenn die Anzahl der Noten eines Faches eingestellt wird
     
     function submitForm(event){
         if($(".NaWiCheckbox").length != 0){//TG ausgewählt, da nur TG Nawicheckbox hat
@@ -20,8 +21,20 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
                 $(".NaWiCheckbox").not(".NaWiCheckbox:checked").parent().parent().remove();
             }
         }
-        
         updateTGNawiSelection(); 
+        var nullSubjects = [];//Liste mit Fächern, die 0 mal eingebracht werden.
+
+        var sumOfSubjects = 0;//Summe der Wahlnotenanzahl.
+        $(".CountField").each(function(){//Für Jedes .CountField wird das ausgeführt
+            var value = Number($(this).val());//Wert des Countfieldes (Anzahl einbringender Noten)
+            sumOfSubjects += value;//Summe wird um Value erhöt
+            if(value == 0){//Wenn value 0 dann wird die Tabellenzeile zu nullSubjects hinzugefügt
+                nullSubjects.push($(this).parent().parent());
+            }
+        });
+        for(i = 0; i < nullSubjects.length; i++){//Entferne alle Fächer mit 0 Noten eingebracht.
+            nullSubjects[i].remove();
+        }
     }
     
     function onChangeNawiFach(event){
@@ -52,5 +65,29 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
         newVal = $(".Fremdsprache.APF").val();
         otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
         $(".Fremdsprache").not(".APF").val(otherVal);
+    }
+    
+    function onChangeCountNumber(event){
+        var newValue = Number($(this).val());//Der neue Feld eines CountField's
+        FSubjectCountSum = getSubjectCountSum();//Lädt die aktuelle summe aller Countfield's
+        var max = (FSubjectCountSum > 4) ? 6-FSubjectCountSum : 4;//Wenn Diese über 4, dann wird das Maximum aller CountFields herabgesetzt
+        $(".CountField").each(function(){
+            var currentFieldValue = Number($(this).val());//Der wert des momentanen Feldes
+            if(max == 0){//wenn max = 0 dann soll das Maximum aller auf seinen jetzigen wert gesetzt werde, sodass man nichts erhöhen kann
+                $(this).attr("max", currentFieldValue);
+            }else if(!(currentFieldValue >= max)){//Sonst wird das Maximum bei allen Feldern unter max auf max gesetzt.
+                $(this).attr("max", max);
+            }
+        
+        });
+    }
+    
+    function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
+        var sumOfSubjects = 0;
+        $(".CountField").each(function(){
+            var value = Number($(this).val());
+            sumOfSubjects += value;
+        });
+        return sumOfSubjects;
     }
 }

@@ -1,3 +1,4 @@
+<!--Der Include für die Einstellungs Leiste an der Linken seite des Bildschirms.-->
 <div class="settingBar">
     <div class="settingContent">
         <h2 id="settingsTitle">Einstellungen</h2>

@@ -1,4 +1,5 @@
 <?php
+    //Alle Fächer
 	$_SUBJ = array(	"Ma" => "Mathe", 
                     "MT/ET" => "MT/ET", 
                     "De" => "Deutsch", 
@@ -100,12 +101,12 @@
     $NAWLDE = array();//2. Nawi Wirtschaft Deutsch
     $NAWLEN = array();//2. Nawi Wirtschaft Englisch
 
-    $WFGEDE = array();//Wahlfächer Gesundheit Deutsch
-    $WFGEEN = array();//Wahlfächer Gesundheit Englisch
-    $WFTE = array();//Wahlfächer Technik
-    $WFER = array();//Wahlfächer Ernährung
-    $WFWLDE = array();//Wahlfächer Wirtschaft Deutsch
-    $WFWLEN = array();//Wahlfächer Wirtschaft Englisch
+    $WFGEDE = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Gesundheit Deutsch
+    $WFGEEN = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Gesundheit Englisch
+    $WFTE = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Technik
+    $WFER = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Ernährung
+    $WFWLDE = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Wirtschaft Deutsch
+    $WFWLEN = array($_SUBJ['Spo'], "Religion/Philosophie" => $RELPHI, $_SUBJ['Bin']);//Wahlfächer Wirtschaft Englisch
 
     function loadCSVToArray($FileName, &$array){
         $fileHandler = fopen($FileName, "r");//Öffnet die datei $fileName als readonly.

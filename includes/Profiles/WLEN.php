@@ -1,5 +1,6 @@
 <?php
     include_once 'includes/subjectTableFunctions.php';
+    include_once 'includes/profileData.php';
 
     //Funktion siehe ER.php
     function loadFHSSubjectChooser(){

@@ -4,10 +4,11 @@
 			<?php
             require_once 'includes/htmlObjectFunctions.php';
             require_once 'includes/profileData.php';
-			if(!isset($_POST['absch'])){
+			if(!isset($_POST['absch'])){//Wenn die Seite geladen wird, ohne dass $_POST['absch'] gesetzt ist, weiterleitung auf index.php
 				redirect("index.html");
 			}
-			echo $_POST['absch'] . " Rechner"
+            //Der titel der seite wird auf Abschluss + Rechner - Seite gesetzt
+			echo $_POST['absch'] . " Rechner - Ergebnis"
 			?>
 		</title>
 		 <meta charset="UTF-8"> 
@@ -31,6 +32,7 @@
             <div class="content">
                 <h1>Ergebnis</h1>
                 <?php
+                    //Führe die Funktion für den gewählten Abschluss aus.
                     switch($_POST['absch']){
                         case "Abitur":
                             calcAbi();
@@ -85,92 +87,97 @@
                     }
 
                     function calcAbi(){
-                        $MarksCount = sizeof($_POST['marks']) + sizeof($_POST['emarks']);
-                        $AllowedUn = floor(($MarksCount * 0.2));
-                        $MinPNotUn = 3;
-                        $MinPMarkSum = 20;
-                        $MinEASum = 40;
-                        $MinPSum = 100;
-                        $MinMarkSum = 200;
-                        $SUMEMarks = 0;
-                        $SUMMarks = 0;
-                        $SUMPunterMinPNotUn = 0;
-                        $SUMNull = 0;
-                        $SUMPMarks = 0;
-                        $CountUn = 0;
-                        $PMarksSum = array();
+                        $MarksCount = sizeof($_POST['marks']) + sizeof($_POST['emarks']);//Anzahl der eingebrachten Noten
+                        $AllowedUn = floor(($MarksCount * 0.2));//Erlaubte unterkurse
+                        $MinPNotUn = 3;//Erlaubte anzahn an Unterkursen in den Prüfungen
+                        $MinPMarkSum = 20;//Mindestsumme der Prüfung
+                        $MinEASum = 40;//Mindestsumme der e.A. Zusammen
+                        $MinPSum = 100;//Mindestsumme der Prüfungen gesamt
+                        $MinMarkSum = 200;//Mindestsumme der Punkte in den Fächern
+                        $SUMEMarks = 0;//Summe der e.A. Fächer
+                        $SUMMarks = 0;//Summe der anderen Fächer
+                        $SUMPunterMinPNotUn = 0;//Summe der Prüfungen unter 20 Punkte
+                        $SUMNull = 0;//Summe der Fächer mit 0 Punkten
+                        $SUMPMarks = 0;//Summe der Prüfungen
+                        $CountUn = 0;//Anzahl der Unterkurse
+                        
+                        //Geht die Noten der e.A. Durch
                         foreach($_POST['emarks'] as $emark){
                             $SUMEMarks += $emark;
-                            if($emark < 5){
-                                if($emark == 0)$SUMNull++;
+                            if($emark < 5){//Wenn Unterkurs
+                                if($emark == 0)$SUMNull++;//Wenn 0
                                 $CountUn++;
                             }
-                        }//Summe der e.A. Noten bilden.
+                        }
+                        //Summe der e.A. Noten bilden.
                         foreach($_POST['marks'] as $mark){
                             $SUMMarks += $mark;
-                            if($emark < 5){
-                                if($emark == 0)$SUMNull++;
+                            if($emark < 5){//Wenn Unterkurs
+                                if($emark == 0)$SUMNull++;//Wenn 0
                                 $CountUn++;
                             }
-                        }//Summe der anderen Fächer bilden
+                        }
+                        //Summe der Prüfungsfächer bilden
                         foreach($_POST['pmarks'] as $subject => $mark){//Summe der jeweiligen Prüfung bilden.
-                            if(isset($_POST['mpmarks'][$subject])){
-                                $MpMark = $_POST['mpmarks'][$subject];
+                            if(isset($_POST['mpmarks'][$subject])){//Wenn eine Mündliche geschrieben wurde wird anders gerechnet
+                                $MpMark = $_POST['mpmarks'][$subject];//Bekomme die Mündliche Prüfungsnote des Faches
                                 $thisSum = ceil((4*($mark*+$MpMark)/3));
-                                $PMarksSum[$subject] = $thisSum;
                                 $SUMPMarks += $thisSum;
-                                if($thisSum < $MinPMarkSum){
+                                if($thisSum < $MinPMarkSum){//Wenn ein Unterkurs drin
                                     $SUMPunterMinPNotUn++;
                                 }
                             }else{
                                 $thisSum = ceil((4*$mark));
                                 $PMarksSum[$subject] = $thisSum;
-                                if($thisSum < $MinPMarkSum){
+                                if($thisSum < $MinPMarkSum){//Wenn ein Unterkurs drin
                                     $SUMPunterMinPNotUn++;
                                 }
                                 $SUMPMarks += $thisSum;
                             }
                         }
+                        //Summe der mündlichen Prüfungen
                         foreach($_POST['mpmarks'] as $subject => $mark){
-                            if(!isset($_POST['pmarks'][$subject])){
+                            if(!isset($_POST['pmarks'][$subject])){//Wenn noch nicht in der vorherigen Rechnung mit drin
                                 $thisSum = ceil((4*$mark));
-                                $PMarksSum[$subject] = $thisSum;
-                                if($thisSum < $MinPMarkSum){
+                                if($thisSum < $MinPMarkSum){//Wenn ein Unterkurs
                                     $SUMPunterMinPNotUn++;
                                 }
                                 $SUMPMarks += $thisSum;
                             }
                         }
 
-                        $gesPoints = round(($SUMEMarks + $SUMMarks)/$MarksCount*40);
+                        $gesPoints = round(($SUMEMarks + $SUMMarks)/$MarksCount*40);//Berechne gesamtpunktzahl
 
-                        if($SUMNull > 0){
+                        if($SUMNull > 0){//Wenn zuviele Nullkurse
                             echo getHTMLObject("h2", array("id" => "resultString"), "Du hast " . $SUMNull . " mal 0 Punkte. Erlaubt sind 0 mal 0 Punkte.");
                         }else if($SUMEMarks < $MinEASum){//Prüfe ob genug e.A. Punktzahl
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in e.A. Fächern: " . $SUMEMarks . " von " . $MinEASum);
-                        }else if($AllowedUn < $CountUn){
+                        }else if($AllowedUn < $CountUn){//Wenn zuviele Unterkurse
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Unterkurse: " . $CountUn);
-                        }else if($gesPoints < $MinMarkSum){
+                        }else if($gesPoints < $MinMarkSum){//Wenn zuwenig Punkte
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte in der Summe: " . $gesPoints . " von " . $MinMarkSum);
-                        }else if(!($SUMPunterMinPNotUn < $MinPNotUn)){
+                        }else if(!($SUMPunterMinPNotUn < $MinPNotUn)){//Zuviele Prüfungen unter 5 Punkten
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu viele Prüfungen unter 5 Punkten");
-                        }else if($SUMPMarks < $MinPSum){
+                        }else if($SUMPMarks < $MinPSum){//Zuwenig Punkte in den Prüfungen gesamt
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
-                        }else{
+                        }else{//Bestanden
                             echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . $gesPoints . " Punkten, das entspricht einer " . getMarkFromPoints($gesPoints, 0));
                             echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
                         }
                     }
 
                     function getMarkFromPoints($points, $type){//Type = 0 Abi   Type = 1 FHS
+                        //Gobale Werte (siehe profileData.php)
                         global $FHSMarkTable;
                         global $AbiMarkTable;
+                        
+                        //Switch auf typ. Wenn 0 dann Abi, wenn 1 dann FHS
                         switch($type){
                             case 0:
-                                $prevValue = 0;
-                                $previousTablePoints = 0;
+                                $prevValue = 0;//Der Wert der zuvor aus der Tabelle gelesen wurde
+                                $previousTablePoints = 0;//Die Punktzahl, die vorher aus der Tabelle gelesen wurde
                                 foreach($AbiMarkTable as $refPoints => $value){
-                                    if($points >= $previousTablePoints && $points < $refPoints){
+                                    if($points >= $previousTablePoints && $points < $refPoints){//Wenn deine Punktzahl zwischen der Vorherigen und jetzigen Punktzahl liegt, wird die prevValue zurückgegeben 
                                         return $prevValue;
                                     }else{
                                         $previousTablePoints = $refPoints;
@@ -180,10 +187,10 @@
                                 return $AbiMarkTable[$previousTablePoints];
                                 break;
                             case 1:
-                                $prevValue = 0;
-                                $previousTablePoints = 0;
+                                $prevValue = 0;//Der Wert der zuvor aus der Tabelle gelesen wurde
+                                $previousTablePoints = 0;//Die Punktzahl, die vorher aus der Tabelle gelesen wurde
                                 foreach($FHSMarkTable as $refPoints => $value){
-                                    if($points >= $previousTablePoints && $points < $refPoints){
+                                    if($points >= $previousTablePoints && $points < $refPoints){//Wenn deine Punktzahl zwischen der Vorherigen und jetzigen Punktzahl liegt, wird die prevValue zurückgegeben 
                                         return $prevValue;
                                     }else{
                                         $previousTablePoints = $refPoints;

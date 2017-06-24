@@ -10,15 +10,12 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
 }
 function formSubmit(event){
     var nullSubjects = [];//Liste mit Fächern, die 0 mal eingebracht werden.
-    var Subjects = [];//Liste mit Fächern, die eingebracht werden.
     var sumOfSubjects = 0;//Summe der Wahlnotenanzahl.
     $(".CountField").each(function(){//Für Jedes .CountField wird das ausgeführt
         var value = Number($(this).val());//Wert des Countfieldes (Anzahl einbringender Noten)
         sumOfSubjects += value;//Summe wird um Value erhöt
         if(value == 0){//Wenn value 0 dann wird die Tabellenzeile zu nullSubjects hinzugefügt
             nullSubjects.push($(this).parent().parent());
-        }else{//Sonst wird die Tabellenzeile zu Subjects hinzugefügt
-            Subjects.push($(this).parent().parent());
         }
     });
     if(sumOfSubjects != 3){//Kann nicht absenden.
@@ -34,10 +31,12 @@ function formSubmit(event){
 function onChangeCountNumber(event){
     var newValue = Number($(this).val());//Der neue Feld eines CountField's
     FSubjectCountSum = getSubjectCountSum();//Lädt die aktuelle summe aller Countfield's
-    var max = (FSubjectCountSum >= 2) ? 3-FSubjectCountSum : 2;//Wenn Diese über gleich 2, dann wird das Maximum aller CountFields herabgesetzt
+    var max = (FSubjectCountSum > 2) ? 3-FSubjectCountSum : 2;//Wenn Diese über gleich 2, dann wird das Maximum aller CountFields herabgesetzt
     $(".CountField").each(function(){
-        var currentFieldValue = Number($(this).val());
-        if(!(currentFieldValue > max)){//Max wird nur herabgesetzt, wenn currentFieldValue <= max ist, da sonst nicht absendbar
+        var currentFieldValue = Number($(this).val());//Der wert des momentanen Feldes
+        if(max == 0){//wenn max = 0 dann soll das Maximum aller auf seinen jetzigen wert gesetzt werde, sodass man nichts erhöhen kann
+            $(this).attr("max", currentFieldValue);
+        }else if(!(currentFieldValue >= max)){//Sonst wird das Maximum bei allen Feldern unter max auf max gesetzt.
             $(this).attr("max", max);
         }
         

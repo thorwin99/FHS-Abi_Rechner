@@ -1,9 +1,10 @@
 <?php
-    include_once 'includes/profileData.php';
     require_once 'includes/htmlObjectFunctions.php';
     
-    switch($_POST['profil']){//Lädt die Tabelle aus den PHP dateien nach dem Ausgesuchtem Profil.
+    //Lädt die Tabelle aus den PHP dateien nach dem Ausgesuchtem Profil.
+    switch($_POST['profil']){
         case "GE":
+            //Auswahl des Profils nach der Profilsprache (Deutsch, Englisch)
             if($_POST['language'] == "DE"){
                 include_once 'includes/Profiles/GEDE.php';
             }else{
@@ -14,6 +15,7 @@
                 include_once 'includes/Profiles/ER.php';
             break;
         case "WL":
+            //Auswahl des Profils nach der Profilsprache (Deutsch, Englisch)
             if($_POST['language'] == "DE"){
                 include_once 'includes/Profiles/WLDE.php';
             }else{
@@ -25,8 +27,10 @@
             break;
     }
     if($_POST['absch'] == "Abitur"){
+        //Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
         loadAbiSubjectChooser();
     }else{
-        loadFHSSubjectChooser();//Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
+        //Gibt die Tabelle aufgrund des zufor ausgewähltem Profil aus
+        loadFHSSubjectChooser();
     }
 ?>

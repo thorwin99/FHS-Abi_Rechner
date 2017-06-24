@@ -12,6 +12,9 @@
     //echo createCardView("Gebe nun deine Noten ein", array(), "Noteneingabe");
     echo getHTMLObject("table", array(), $table);
 
+    /*Fügt die e.A. Fächer zur $table hinzu
+    &$table: Referenz zur angegebenen Variable.
+    */
     function addEASubjects(&$table){
         $empty = getHTMLObject("td", array(), getHTMLObject("input", array("disabled" => "disabled", "type" => "number", "value" => 0), ""));
         
@@ -33,6 +36,9 @@
             $table = $table . getHTMLObject("tr", array(), $TRContent);
         }
     }
+    /*Fügt die Prüfungs Fächer zur $table hinzu
+    &$table: Referenz zur angegebenen Variable.
+    */
     function addPSubjects(&$table){
         $empty = getHTMLObject("td", array(), getHTMLObject("input", array("disabled" => "disabled", "type" => "number", "value" => 0), ""));
         foreach($_POST['psubj'] as $PSubject){
@@ -54,6 +60,9 @@
         }
         
     }
+    /*Fügt das P5 Fach zur $table hinzu
+    &$table: Referenz zur angegebenen Variable.
+    */
     function addPVSubject(&$table){
         $empty = getHTMLObject("td", array(), getHTMLObject("input", array("disabled" => "disabled", "type" => "number", "value" => 0), ""));
         $PSubject = $_POST['p5subj'];
@@ -68,6 +77,9 @@
         $table = $table . getHTMLObject("tr", array(), $TRContent);
     }
     
+    /*Fügt die restlichen Fächer hinzu Fächer zur $table hinzu
+    &$table: Referenz zur angegebenen Variable.
+    */
     function addSubjects(&$table){
         $empty = getHTMLObject("td", array(), getHTMLObject("input", array("disabled" => "disabled", "type" => "number", "value" => 0, "required" => "required"), ""));
         foreach($_POST['subj'] as $key => $Subject){
@@ -80,6 +92,10 @@
             $table = $table . getHTMLObject("tr", array(), $TRContent);
         }
     }
+
+    /*Fügt einen Header zur $table hinzu
+    &$table: Referenz zur angegebenen Variable.
+    */
     function addTableHeader(&$table){
         $headtr = getHTMLObject("th", array(), "Fach");
         for($i = 1; $i <= 4; $i++){
