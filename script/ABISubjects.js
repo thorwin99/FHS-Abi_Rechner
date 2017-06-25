@@ -21,6 +21,7 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
             if($(".NaWiCheckbox:checked").length == 0){//Bei TG muss geprüft werden, ob überhaubt eine 2. Naturwissenschaft ausgewählt wurde, und die nicht ausgewählte 2. muss entfernt werden.
                 alert("Du musst mindestens eine 2. Naturwissenschaft wählen");
                 event.preventDefault();
+                return;
             }else{
                 $(".NaWiCheckbox").not(".NaWiCheckbox:checked").parent().parent().remove();
             }

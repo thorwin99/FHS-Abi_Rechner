@@ -9,7 +9,7 @@ function isReady(){
             //State ist closed, also öffne einstellungen und verschiebe die Seite um 200px nach rechts und zeige das Overlay
             case 0:
                 $(".settingBar").css("transform", "translateX(0%)");
-                $(".page").css("margin-left", "200px");
+                $(".page").css("margin-left", $(".settingBar").width() + "px");
                 $(".overlay").show(0).css("background-color", "rgba(0,0,0,0.5)");
                 rotateSettingsWheel(-360);
                 state = 1;

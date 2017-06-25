@@ -33,3 +33,8 @@ result.php: Ergebnis
 ---HTML---
 <noscript>: Alles, was sich darin befindet, wird angezeigt, wenn der Nutzer kein Javascript aktiviert hat.
 <div>: Ein Layout container, der wie eine Box funktioniert, um Layout elemente anzuordnen.
+
+css:
+
+:root - Pseudoklasse zum erstellen von variablen
+var(--name): Variable ansprechen
