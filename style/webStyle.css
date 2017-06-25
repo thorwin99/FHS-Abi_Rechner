@@ -69,6 +69,9 @@ select{
     transition: 0.5s ease;
     background: transparent;
     min-width: 112px;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    background: url(../img/arrow_drop_down_grey_24x24.png) no-repeat 96% 0;
 }
 select:focus{
     display: block;
@@ -78,7 +81,6 @@ select:focus{
     border-top: 0;
     height: 36px;
     content: "\25BC";
-    background-color: transparent;
 }
 option{
     height: 32px;
