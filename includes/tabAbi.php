@@ -10,6 +10,7 @@
     addPVSubject();
     addSubjects();
     
+    //Fügt nun alle Fächer an die tabelle
     foreach($subjP as $td){
         $table = $table . $td;
     }
@@ -42,10 +43,10 @@
             $pmtd = getHTMLObject("td", array(), $pmarkinput);
             $mptd = getHTMLObject("td", array(), $mpmarkinput);
             
-            $prf = false;
-            $mprf = false;
+            $prf = false;//Ob ein Fach mit Prüfung
+            $mprf = false;//Ob ein Fach mit Mündlicher Prüfung
             $TRContent = $Label . $emtd;
-            if(isset($_POST['Prf'][$EASubject])){
+            if(isset($_POST['Prf'][$EASubject])){//Wenn eine Prüfung eingegeben wird, muss $prf auf true und eine spalte für das Fach angesetzt werden
                 $TRContent = $TRContent . $pmtd;
                 $prf = true;
             }else{
@@ -58,7 +59,7 @@
                 $TRContent = $TRContent . $empty;
             }
             $table = getHTMLObject("tr", array(), $TRContent);
-            if($prf){
+            if($prf){//Je Nachdem, was das Fach ist, wird es in ein anderes array gepackt. Prüfungsfächer zu Prüfungsfächer usw:..
                 array_push($subjP, $table);
             }else if($mprf){
                 array_push($subjMP, $table);

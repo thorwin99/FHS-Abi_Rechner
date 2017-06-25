@@ -5,7 +5,7 @@
             require_once 'includes/htmlObjectFunctions.php';
             require_once 'includes/profileData.php';
 			if(!isset($_POST['absch'])){//Wenn die Seite geladen wird, ohne dass $_POST['absch'] gesetzt ist, weiterleitung auf index.php
-				redirect("index.html");
+				redirect("index.php");
 			}
             //Der titel der seite wird auf Abschluss + Rechner - Seite gesetzt
 			echo $_POST['absch'] . " Rechner - Ergebnis"

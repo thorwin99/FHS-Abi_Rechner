@@ -17,7 +17,7 @@
         foreach($_POST['easubj'] as $EASubject){
             $EMarkInputField = getHTMLObject("input", array("type" => "number", "name" => "emarks[]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "required" => "required"), "");   
             $EMarksTD = getHTMLObject("td", array(), $EMarkInputField);
-            $label = getHTMLObject("td", array(), $EASubject);
+            $label = getHTMLObject("td", array("class" => "eaLabel"), $EASubject);
             
             $table = $table . getHTMLObject("tr", array(), $label . $EMarksTD . $EMarksTD);
         }
