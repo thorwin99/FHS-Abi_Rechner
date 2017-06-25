@@ -65,13 +65,13 @@
                     $FachTD = $FachTD . getHTMLObject("h4", array(), "2. Naturwissenschaft");
                     $Dropdown = getDropdownList("subj[]", array("class" => $key . " IINaWi"), $Subject);
                     $Label = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
-                    $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "subjamount[]", "value" => 4, "class" => "NaWiCheckbox"), "");
+                    $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "subjamount[]", "value" => 4, "class" => "NaWiCheckbox " . $key), "");
                     $TdCheck = getHTMLObject("td", array(), $Checkbox);
                     $table = $table . getHTMLObject("tr", array(), $Label . $TdCheck);
                 }else{
                     $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $Subject), "");
                     $Label = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $HiddenLabel);
-                    $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "subjamount[]", "value" => 4, "class" => "NaWiCheckbox"), "");
+                    $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "subjamount[]", "value" => 4, "class" => "NaWiCheckbox " . $Subject), "");
                     $TdCheck = getHTMLObject("td", array(), $Checkbox);
                     $table = $table . getHTMLObject("tr", array(), $Label . $TdCheck);
                 }

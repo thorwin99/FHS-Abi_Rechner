@@ -256,13 +256,13 @@
                 $TLabel = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
                 $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 4, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
-                $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
+                $table = $table . getHTMLObject("tr", array("id" => "td" . $key), $TLabel . $TCount);
             }else{
                 $THiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $Subject), "");
                 $TLabel = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $THiddenLabel);
                 $CountField = getHTMLObject("input", array("type" => "number", "min" => 0, "max" => 4, "step" => 2.0, "class" => "CountField", "value" => 0, "name" => "subjamount[]"), "");
                 $TCount = getHTMLObject("td", array(), $CountField);
-                $table = $table . getHTMLObject("tr", array(), $TLabel . $TCount);
+                $table = $table . getHTMLObject("tr", array("id" => "td" . $Subject), $TLabel . $TCount);
             }
         }
         if($table != ""){//Wenn es überhaubt diese Tabellenspalte gibt, wird eine Hilfe cardview erstellt

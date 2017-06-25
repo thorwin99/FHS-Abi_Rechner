@@ -4,9 +4,11 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     onChangeNawiFach();
     onChangeDDAPF();
     onChangeFremdsprachFach();
+    onChangeNawiFach();
     updateTGNawiSelection();
     $("#subjectFrom").submit(submitForm);
     $(".INaWi").change(onChangeNawiFach);
+    $(".IINaWi").change(onChangeSecNawiFach);
     $("select.APF").change(onChangeDDAPF);
     $(".Fremdsprache.APF").change(onChangeFremdsprachFach);
     $(".NaWiCheckbox").change(updateTGNawiSelection);
@@ -53,18 +55,29 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
             }
             $(".NaWiCheckbox").each(function(){
                 $(this).attr("value", 4/sumOfCheckboxes);
+                if($(this).hasClass("Informatik")){
+                    if($(".Informatik:checked").length != 0){
+                        $("#tdInformatik").hide();
+                        $("#tdInformatik").find(".CountField").val("0");
+                    }else{
+                        $("#tdInformatik").show();
+                    }
+                }
             });
         }
     }
     
     function onChangeDDAPF(event){
-        $("input.APF[type=checkbox]").attr("name", "mdlPrf[" + $("select.APF").val() + "]");
+        $("input.APF[type=checkbox]").attr("name", "mdlPrf[" + $("select.APF").val() + "]");//Setzt den Namen der Checkbox auf das Ausgewählte element in der Dropdown Liste
+        
     }
     
     function onChangeFremdsprachFach(event){
-        newVal = $(".Fremdsprache.APF").val();
-        otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
-        $(".Fremdsprache").not(".APF").val(otherVal);
+        if($(".Fremdsprache.APF").length != 0){
+            newVal = $(".Fremdsprache.APF").val();
+            otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
+            $(".Fremdsprache").not(".APF").val(otherVal);
+        }
     }
     
     function onChangeCountNumber(event){
@@ -81,7 +94,19 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
         
         });
     }
-    
+
+    function onChangeSecNawiFach(event){
+        var value = $(".IINaWi").val();
+        if(value == "Informatik"){
+            $("#tdInformatik").hide();
+            $("#tdInformatik").children("td.CountField").val(0);
+            console.log("4567");
+            onChangeCountNumber();
+        }else{
+            $("#tdInformatik").show();
+        }
+    }
+
     function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
         var sumOfSubjects = 0;
         $(".CountField").each(function(){
