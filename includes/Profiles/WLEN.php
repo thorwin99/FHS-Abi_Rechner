@@ -29,7 +29,8 @@
         global $LANGUAGES;
         array_push($LANGUAGES, $_POST['seclanguage']);//Fügt die 2. Fremdsprache zu der anderen hinzu
         
-        $PSubjects = loadPSubjects($EAFWLEN, $APFWLEN, $P5WLEN);
+        loadEASubjects($EAFWLEN);
+        $PSubjects = loadPSubjects($APFWLEN, $P5WLEN);
         $Subjects = loadSubjects($IVFWLEN, "IVF", 4);
         $SubjectsII = loadSubjects($IIFWL, "IIF", 2);
         $NaWi = loadNaWiSubjects($NAFWLEN, $NAWLEN);

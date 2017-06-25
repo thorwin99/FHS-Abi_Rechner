@@ -45,14 +45,14 @@ function onChangeCountNumber(event){
 function onChangeFremdsprachFach(event){//Andert die Dropdownlisten der Fremdsprachen so, dass sie gegengesetzt sind.
     if(!$(".Fremdsprache.FPF").length)return;
     var value = $(".Fremdsprache.FPF").val();
-    $(".Fremdsprache").not(".FPF").find("option[value=" + value + "]").hide().removeAttr('selected');
-    $(".Fremdsprache").not(".FPF").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected').trigger("chosen:updated");;
+    $(".Fremdsprache").not(".FPF").find("option[value=" + value + "]").prop("disabled", true).removeAttr('selected');
+    $(".Fremdsprache").not(".FPF").find("option[value!=" + value + "]").prop("disabled", false).removeAttr('selected').prop('selected', true).trigger("chosen:updated");
 }
 function onChangeNawiFach(event){
     if(!$(".Naturwissenschaft.FPF").length)return;
     var value = $(".Naturwissenschaft.FPF").val();
-    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value=" + value + "]").hide().removeAttr('selected');
-    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected').trigger("chosen:updated");;
+    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value=" + value + "]").prop("disabled", true).removeAttr('selected');
+    $(".Naturwissenschaft").not(".Naturwissenschaft.FPF").find("option[value!=" + value + "]").prop("disabled", false).removeAttr('selected').prop('selected', true).trigger("chosen:updated");
 }//Andert die Dropdownlisten der Nawi so, dass sie gegengesetzt sind.
 function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
     var sumOfSubjects = 0;

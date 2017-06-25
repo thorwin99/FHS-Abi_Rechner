@@ -4,7 +4,6 @@
 
     addTableHeader($table);
     addEASubjects($table);
-    addPSubjects($table);
     addPVSubject($table);
     addSubjects($table);
 
@@ -27,7 +26,12 @@
             $pmtd = getHTMLObject("td", array(), $pmarkinput);
             $mptd = getHTMLObject("td", array(), $mpmarkinput);
             
-            $TRContent = $Label . $emtd . $pmtd;
+            $TRContent = $Label . $emtd;
+            if(isset($_POST['Prf'][$EASubject])){
+                $TRContent = $TRContent . $pmtd;
+            }else{
+                $TRContent = $TRContent . $empty;
+            }
             if(isset($_POST['mdlPrf'][$EASubject])){
                 $TRContent = $TRContent . $mptd;
             }else{
@@ -35,30 +39,6 @@
             }
             $table = $table . getHTMLObject("tr", array(), $TRContent);
         }
-    }
-    /*Fügt die Prüfungs Fächer zur $table hinzu
-    &$table: Referenz zur angegebenen Variable.
-    */
-    function addPSubjects(&$table){
-        $empty = getHTMLObject("td", array(), getHTMLObject("input", array("disabled" => "disabled", "type" => "number", "value" => 0), ""));
-        foreach($_POST['psubj'] as $PSubject){
-            $Label = getHTMLObject("td", array(), $PSubject);
-            $markinput = getHTMLObject("input", array("type" => "number", "name" => "marks[]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "required" => "required"), "");
-            $pmarkinput = getHTMLObject("input", array("type" => "number", "name" => "pmarks[" . $PSubject . "]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "class" => "pinput", "required" => "required"), "");
-            $mpmarkinput = getHTMLObject("input", array("type" => "number", "name" => "mpmarks[" . $PSubject . "]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "class" => "mpinput", "required" => "required"), "");
-            $mtd = str_repeat(getHTMLObject("td", array(), $markinput), 4);
-            $pmtd = getHTMLObject("td", array(), $pmarkinput);
-            $mptd = getHTMLObject("td", array(), $mpmarkinput);
-            
-            $TRContent = $Label . $mtd . $pmtd;
-            if(isset($_POST['mdlPrf'][$PSubject])){
-                $TRContent = $TRContent . $mptd;
-            }else{
-                $TRContent = $TRContent . $empty;
-            }
-            $table = $table . getHTMLObject("tr", array(), $TRContent);
-        }
-        
     }
     /*Fügt das P5 Fach zur $table hinzu
     &$table: Referenz zur angegebenen Variable.
@@ -76,7 +56,6 @@
         $TRContent = $Label . $mtd . str_repeat($empty, 4-$MarkCount) . $empty . $mptd;
         $table = $table . getHTMLObject("tr", array(), $TRContent);
     }
-    
     /*Fügt die restlichen Fächer hinzu Fächer zur $table hinzu
     &$table: Referenz zur angegebenen Variable.
     */
@@ -87,12 +66,24 @@
             $Label = getHTMLObject("td", array(), $Subject);
             $markinput = getHTMLObject("input", array("type" => "number", "name" => "marks[]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "required" => "required"), "");
             $mtd = str_repeat(getHTMLObject("td", array(), $markinput), $_POST['subjamount'][$key]);
-
-            $TRContent = $Label . $mtd . str_repeat($empty, 6 - $_POST['subjamount'][$key]);
+            $pmarkinput = getHTMLObject("input", array("type" => "number", "name" => "pmarks[" . $Subject . "]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "class" => "pinput", "required" => "required"), "");
+            $mpmarkinput = getHTMLObject("input", array("type" => "number", "name" => "mpmarks[" . $Subject . "]", "min" => 0, "max" => 15, "step" => 1.0, "value" => 0, "class" => "mpinput", "required" => "required"), "");
+            $pmtd = getHTMLObject("td", array(), $pmarkinput);
+            $mptd = getHTMLObject("td", array(), $mpmarkinput);
+            $TRContent = $Label . $mtd . str_repeat($empty, 4 - $_POST['subjamount'][$key]);
+             if(isset($_POST['Prf'][$Subject])){
+                $TRContent = $TRContent . $pmtd;
+            }else{
+                $TRContent = $TRContent . $empty;
+            }
+            if(isset($_POST['mdlPrf'][$Subject])){
+                $TRContent = $TRContent . $mptd;
+            }else{
+                $TRContent = $TRContent . $empty;
+            }
             $table = $table . getHTMLObject("tr", array(), $TRContent);
         }
     }
-
     /*Fügt einen Header zur $table hinzu
     &$table: Referenz zur angegebenen Variable.
     */

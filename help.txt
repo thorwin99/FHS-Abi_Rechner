@@ -25,9 +25,10 @@ Ordnerstruktur:
     -script: Alle Javascript dateien.
     -style: Die CSS Dateien.
 
-index.html: leitet dich auf index.php weiter.
 index.php: Die Hauptseite der Website.
 chooseSubjects: Die Seite, wo man seine Fächer auswählt.
+marks.php: Noteneingabe
+result.php: Ergebnis
 
 ---HTML---
 <noscript>: Alles, was sich darin befindet, wird angezeigt, wenn der Nutzer kein Javascript aktiviert hat.

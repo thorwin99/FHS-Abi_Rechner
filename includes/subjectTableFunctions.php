@@ -3,13 +3,13 @@
     $CVOnClick = "$(this).parent().parent().hide(500)";
     $CVTitlePFs = "Pflichtfächer";
     $CVTitleWFs = "Wahlfächer";
-    $CVTitlePSubjects = "Mündliche Prüfungen";
+    $CVTitlePSubjects = "Prüfungsfächer";
     $CVTitleSubjects ="Pflichtfächer";
     $CVTitleNaWi = "Naturwissenschaften";
     $CVTextPFs = "Gebe hier deine Plichtfächer an, die du wählen möchtest.";
     $CVTextWFs = "Wähle hier 3 Fächer aus. Du kannst auch ein Fach zwei mal nehmen.";
     $CVTextWSubjects = "Wähle hier maximal 6 Noten aus, die du einbringen möchtest.";
-    $CVTextPSubjects = "Wähle hier die mündlichen Prüfungen sowie das 5. Prüfungsfach.";
+    $CVTextPSubjects = "Wähle hier die Prüfungen und Ob du sie auch mündlich  einbringen willst, sowie das 5. Prüfungsfach.";
     $CVTextSubjects = "Wähle hier deine Pflichtfächer.";
     $CVTextNaWi = "Wähle hier die 1. und/oder 2. Naturwissenschaft aus.";
     $CVCloseBtn = "Schließen";
@@ -36,7 +36,7 @@
         //Lädt alle vorgegebenen Fächer, wenn Array, in die $FachTD
         foreach($PF as $key => $Subject){
             if(gettype($Subject) == "array"){//Wenn das momentane PF ein array ist, dann kann man wählen
-                $Dropdown = getDropdownList("psubj[]", array("class" => $key, "id" => "FPF"), $Subject);//Die Klasse der Dropdown Liste ist der Key des Arrays, für spätere JS anwendung
+                $Dropdown = getDropdownList("psubj[]", array("class" => $key . " FPF"), $Subject);//Die Klasse der Dropdown Liste ist der Key des Arrays, für spätere JS anwendung
                 $FachTD = $FachTD . getHTMLObject("h3", array(), $key);//Gibt nun den Key sichtbar als Titel aus
                 $FachTD = $FachTD . $Dropdown;//Gibt das Dropdown menü aus
             }else{
@@ -90,11 +90,21 @@
     }
     
     //Abi Funktionen
+    /*Lädt die e.A. Fächer als versteckte Felder
+    $EAF: Die e.A. Fächer
+    */
+    function loadEASubjects($EAF){
+        foreach($EAF as $EASubject){
+            $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "easubj[]", "value" => $EASubject), "");
+            $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 4), "");
+            echo $HiddenLabel . $HiddenAmountField;
+        }
+    }
     /*Lädt die auswahl der Prüfungsfächer, wo man die Mündliche Prüfung ankreutzt.
     Bei einem Array wird natürlich auch eine Dropdown liste angegeben.
     Übergeben werden mündliche noten als mdlPrf[Fach].
     */
-    function loadPSubjects($EAF, $APF, $P5Array){
+    function loadPSubjects($APF, $P5Array){
         //Gobale Werte(Siehe Oben)
         global $CVOnClick;
         global $CVTextPSubjects;
@@ -105,25 +115,17 @@
         $table = "";
         $CardTD = "";
         //Der Titel der TD
-        $Title = getHTMLObject("h3", array(), "Mündliche Prüfungen");
-        //Lädt die e.A. Fächer in die $table
-        foreach($EAF as $EASubject){
-            $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "easubj[]", "value" => $EASubject), "");
-            $Label = getHTMLObject("td", array("class" => "subjectLabel"), $EASubject . $HiddenLabel);
-            $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "mdlPrf[" . $EASubject ."]", "value" => true), "");
-            $TdCheck = getHTMLObject("td", array(), $Checkbox);
-            $table = $table . getHTMLObject("tr", array(), $Label . $TdCheck);
-        }
+        $Title = getHTMLObject("h3", array(), "Prüfungsfächer");
         //Lädt die anderen Prüfungsfächer in die $table. Falls array, dann mit Dropdown als label
         foreach($APF as $key => $Subject){
             if(gettype($Subject) == "array"){
-                $Dropdown = getDropdownList("psubj[]", array("class" => $key . " APF"), $Subject);
+                $Dropdown = getDropdownList("Prf[" . $key . "]", array("class" => $key . " APF"), $Subject);
                 $Label = getHTMLObject("td", array("class" => "subjectLabelDD"), $Dropdown);
                 $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "mdlPrf[" . $key . "]", "value" => true, "class" => $key . " APF"), "");
                 $TdCheck = getHTMLObject("td", array(), $Checkbox);
                 $table = $table . getHTMLObject("tr", array(), $Label . $TdCheck);
             }else{
-                $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "psubj[]", "value" => $Subject), "");
+                $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "Prf[" . $Subject . "]", "value" => $Subject), "");
                 $Label = getHTMLObject("td", array("class" => "subjectLabel"), $Subject . $HiddenLabel);
                 $Checkbox = getHTMLObject("input", array("type" => "checkbox", "name" => "mdlPrf[" . $Subject ."]", "value" => true), "");
                 $TdCheck = getHTMLObject("td", array(), $Checkbox);
@@ -229,6 +231,9 @@
     /*Gibt die 2. Fremdsprache als verstecktes Feld aus, damit in JS das feld an das Dropdown aus PSubjects angepasst werden kann.*/
     function loadSecLanguage($lang){
         $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache"), "");
+        $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
+        echo $HiddenLabel . $HiddenAmountField;
+        $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache APF"), "");
         $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
         echo $HiddenLabel . $HiddenAmountField;
     }

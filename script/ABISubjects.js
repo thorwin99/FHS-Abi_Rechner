@@ -6,11 +6,13 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     onChangeFremdsprachFach();
     onChangeNawiFach();
     updateTGNawiSelection();
+    onChangeNawiAPF();
     $("#subjectFrom").submit(submitForm);
     $(".INaWi").change(onChangeNawiFach);
     $(".IINaWi").change(onChangeSecNawiFach);
     $("select.APF").change(onChangeDDAPF);
-    $(".Fremdsprache.APF").change(onChangeFremdsprachFach);
+    $("select.Fremdsprache.APF").change(onChangeFremdsprachFach);
+    $("select.Naturwissenschaft.APF").change(onChangeNawiAPF);
     $(".NaWiCheckbox").change(updateTGNawiSelection);
     $(".CountField").change(onChangeCountNumber);//Wenn die Anzahl der Noten eines Faches eingestellt wird
     
@@ -42,8 +44,8 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     function onChangeNawiFach(event){
         if(!$(".INaWi").length)return;
         var value = $(".Naturwissenschaft.INaWi").val();
-        $(".Naturwissenschaft").not(".INaWi").find("option[value=" + value + "]").hide().removeAttr('selected');
-        $(".Naturwissenschaft").not(".INaWi").find("option[value!=" + value + "]").show().removeAttr('selected').attr('selected','selected');
+        $(".Naturwissenschaft").not(".INaWi").find("option[value=" + value + "]").prop("disabled", true).removeAttr('selected');
+        $(".Naturwissenschaft").not(".INaWi").find("option[value!=" + value + "]").show().removeAttr('selected').prop('selected', true);
         $(".Naturwissenschaft").not(".INaWi").trigger("chosen:updated");
     }
     
@@ -68,8 +70,12 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     }
     
     function onChangeDDAPF(event){
-        $("input.APF[type=checkbox]").attr("name", "mdlPrf[" + $("select.APF").val() + "]");//Setzt den Namen der Checkbox auf das Ausgewählte element in der Dropdown Liste
-        
+        $("select.APF").each(function(){
+            var changedClass = $(this).attr("class").split(' ')[0];
+            $("input." + changedClass + ".APF[type=checkbox]").attr("name", "mdlPrf[" + $("select." + changedClass + ".APF").val() + "]");//Setzt den Namen der Checkbox auf das Ausgewählte element in der Dropdown Liste
+            $("select." + changedClass + ".APF").attr("name", "Prf[" + $("select." + changedClass + ".APF").val() + "]");       
+                       
+        });
     }
     
     function onChangeFremdsprachFach(event){
@@ -77,6 +83,7 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
             newVal = $(".Fremdsprache.APF").val();
             otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
             $(".Fremdsprache").not(".APF").val(otherVal);
+            $("input.Fremdsprache.APF[type=hidden]").val(newVal);
         }
     }
     
@@ -98,13 +105,28 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     function onChangeSecNawiFach(event){
         var value = $(".IINaWi").val();
         if(value == "Informatik"){
-            $("#tdInformatik").hide();
+            $("#tdInformatik").css("visibility", "hidden");
             $("#tdInformatik").children("td.CountField").val(0);
-            console.log("4567");
             onChangeCountNumber();
         }else{
-            $("#tdInformatik").show();
+            $("#tdInformatik").css("visibility", "visible");
         }
+    }
+    
+    function onChangeNawiAPF(event){
+        var value = $("select.Naturwissenschaft.APF").val();
+        if(value == "Mathe"){
+            $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
+            $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", false);
+            $("select.Fremdsprache.APF").trigger("chosen:updated");
+            updateNaWiSubjects();
+        }else{
+            $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
+            $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", true).removeAttr('selected');
+            $("select.Fremdsprache.APF").trigger("chosen:updated");
+            updateNaWiSubjects();
+        }
+        
     }
 
     function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
@@ -115,4 +137,26 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
         });
         return sumOfSubjects;
     }
+    
+    function updateNaWiSubjects(){
+        var value = $("select.Naturwissenschaft.APF").val();
+        if($(".INaWi").length != 0){//1. Naturwissenschaft existiert
+            if(value != "Mathe"){
+                $(".INaWi").find("option[value=" + value + "]").show().prop("disabled", false).removeAttr('selected').prop('selected', true);
+                $(".INaWi").find("option[value!=" + value + "]").prop("disabled", true).removeAttr('selected');
+            }else{
+                $(".INaWi").find("option").show().prop("disabled", false);
+            }
+            onChangeNawiFach();
+        }else{
+            if(value != "Mathe"){
+                $(".IINaWi").find("option[value=" + value + "]").show().prop("disabled", false).removeAttr('selected').prop('selected', true);
+                $(".IINaWi").find("option[value!=" + value + "]").prop("disabled", true).removeAttr('selected');
+            }else{
+                $(".IINaWi").find("option").show().prop("disabled", false);
+            }
+        }
+    }
+    $(".INaWi").trigger("chosen:updated");
+    $(".IINaWi").trigger("chosen:updated");
 }

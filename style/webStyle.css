@@ -60,6 +60,29 @@ body{
 /*Form Styles*/
 select{
     display: block;
+    border-bottom: 2px solid #bbb;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    height: 36px;
+    content: "\25BC";
+    transition: 0.5s ease;
+    background: transparent;
+    min-width: 112px;
+}
+select:focus{
+    display: block;
+    border-bottom: 2px solid #3949ab;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    height: 36px;
+    content: "\25BC";
+    background-color: transparent;
+}
+option{
+    height: 32px;
+    padding: 0 0 0 24px;
 }
 .mpinput{
     border: 1px blue solid;

@@ -61,12 +61,12 @@
 
 
     //AbiFächer
-    $APFGEDE = array($_SUBJ['Ma'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Gesundheit Deutsch
-    $APFGEEN = array($_SUBJ['Ma'], $_SUBJ['De']);//Prüfungsfächer Gesundheit Englisch
-    $APFTE = array($_SUBJ['De'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Technik
-    $APFER = array($_SUBJ['Ma'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Ernährung
-    $APFWLDE = array($_SUBJ['Ma'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Wirtschaft Deutsch
-    $APFWLEN = array($_SUBJ['Ma'], $_SUBJ['De']);//Prüfungsfächer Wirtschaft Englisch
+    $APFGEDE = array("Naturwissenschaft" => array($_SUBJ['Ma'], $_SUBJ['Bio']), $_SUBJ['Ge'], $_SUBJ['De'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Gesundheit Deutsch
+    $APFGEEN = array("Naturwissenschaft" => array($_SUBJ['Ma'], $_SUBJ['Bio']), $_SUBJ['De'], $_SUBJ['Ge'], $_SUBJ['Eng']);//Prüfungsfächer Gesundheit Englisch
+    $APFTE = array($_SUBJ['De'], $_SUBJ['MT/ET'], $_SUBJ['Ma'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Technik
+    $APFER = array("Naturwissenschaft" => array($_SUBJ['Che'], $_SUBJ['Bio'], $_SUBJ['Ma']), $_SUBJ['Er'], $_SUBJ['De'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Ernährung
+    $APFWLDE = array("Naturwissenschaft" => array($_SUBJ['Phy'], $_SUBJ['Ma']), $_SUBJ['Bwl'], $_SUBJ['De'], "Fremdsprache" => &$LANGUAGES);//Prüfungsfächer Wirtschaft Deutsch
+    $APFWLEN = array("Naturwissenschaft" => array($_SUBJ['Phy'], $_SUBJ['Ma']), $_SUBJ['De'], $_SUBJ['Vwl'], $_SUBJ['Eng']);//Prüfungsfächer Wirtschaft Englisch
     
     $P5GEDE = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Gesundheit Deutsch
     $P5GEEN = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Gesundheit Englisch
@@ -75,12 +75,12 @@
     $P5WLDE = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Wirtschaft Deutsch
     $P5WLEN = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Wahl für mdl. Wirtschaft Englisch
 
-    $IVFGEDE = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Ge']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Deutsch
-    $IVFGEEN = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Erz']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Englisch
-    $IVFTE = array($_SUBJ['Gmk']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Technik
-    $IVFER = array($_SUBJ['Gmk'], $_SUBJ['Wl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Ernährung
-    $IVFWLDE = array($_SUBJ['Vwl'], $_SUBJ['Rl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Deutsch
-    $IVFWLEN = array($_SUBJ['Bwl'], $_SUBJ['Rl']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Englisch
+    $IVFGEDE = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Ge'], $_SUBJ['Ma']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Deutsch
+    $IVFGEEN = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Erz'], $_SUBJ['Ma'], $_SUBJ['De']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Gesundheit Englisch
+    $IVFTE = array($_SUBJ['Gmk'], $_SUBJ['De']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Technik
+    $IVFER = array($_SUBJ['Gmk'], $_SUBJ['Wl'], $_SUBJ['Ma']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Ernährung
+    $IVFWLDE = array($_SUBJ['Vwl'], $_SUBJ['Rl'], $_SUBJ['Ma']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Deutsch
+    $IVFWLEN = array($_SUBJ['Bwl'], $_SUBJ['Rl'], $_SUBJ['Ma'], $_SUBJ['De']);//Pflichtfächer, die 4 mal eingebracht werden müssen bei Wirtschaft Englisch
 
     $IIFGE = array("Kulturfach" => $KULIMU);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Gesundheit
     $IIFTE = array("Kulturfach" => $KULIMU, $_SUBJ['Wl']);//Pflichtfächer, die 2 mal eingebracht werden müssen bei Technik

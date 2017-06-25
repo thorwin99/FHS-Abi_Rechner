@@ -48,7 +48,8 @@
         array_push($LANGUAGES, $_POST['seclanguage']);
         
         //Lädt die Tabellenzeilen der Fachauswahl
-        $PSubjects = loadPSubjects($EAFER, $APFER, $P5ER);
+        loadEASubjects($EAFER);
+        $PSubjects = loadPSubjects($APFER, $P5ER);
         $Subjects = loadSubjects($IVFER, "IVF", 4);
         $SubjectsII = loadSubjects($IIFER, "IIF", 2);
         $NaWi = loadNaWiSubjects($NAFER, $NAER);
