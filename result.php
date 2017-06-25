@@ -121,7 +121,7 @@
                         foreach($_POST['pmarks'] as $subject => $mark){//Summe der jeweiligen Prüfung bilden.
                             if(isset($_POST['mpmarks'][$subject])){//Wenn eine Mündliche geschrieben wurde wird anders gerechnet
                                 $MpMark = $_POST['mpmarks'][$subject];//Bekomme die Mündliche Prüfungsnote des Faches
-                                $thisSum = ceil((4*($mark*+$MpMark)/3));
+                                $thisSum = ceil((4*($mark*2+$MpMark)/3));
                                 $SUMPMarks += $thisSum;
                                 if($thisSum < $MinPMarkSum){//Wenn ein Unterkurs drin
                                     $SUMPunterMinPNotUn++;
@@ -161,7 +161,7 @@
                         }else if($SUMPMarks < $MinPSum){//Zuwenig Punkte in den Prüfungen gesamt
                             echo getHTMLObject("h2", array("id" => "resultString"), "Zu wenig Punkte insgesamt in den Prüfungen: " . $SUMPMarks . " von " . $MinPSum);
                         }else{//Bestanden
-                            echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit " . $gesPoints . " Punkten, das entspricht einer " . getMarkFromPoints($gesPoints, 0));
+                            echo getHTMLObject("h2", array("id" => "resultString"), "Bestanden mit insgesamt " . ($gesPoints + $SUMPMarks) . " Punkten, das entspricht einer " . getMarkFromPoints($gesPoints + $SUMPMarks, 0));
                             echo getHTMLObject("h3", array("id" => "resultString"), "und " . $SUMPMarks . " in den Prüfungen.");
                         }
                     }
