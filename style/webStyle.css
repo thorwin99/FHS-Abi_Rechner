@@ -111,7 +111,6 @@ input[type="checkbox"]:checked:hover{
     border: 2px solid #3949ab;
     border-radius: 2px;
 }
-@support ((-webkit-appearance: none) or (-moz-appearance: none){
 	input[type="checkbox"]:checked:after{
 	content: url(../img/check_white_18x18.png);
 	font-size: 14px;
@@ -120,7 +119,6 @@ input[type="checkbox"]:checked:hover{
 	left: -1px;
 	color: #fafafa;
 	}
-}
 
 input[type="number"]{
     display: block;
