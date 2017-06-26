@@ -81,8 +81,9 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     
     function onChangeFremdsprachFach(event){
         if($("select.Fremdsprache.APF").length != 0){
-            newVal = $(".Fremdsprache.APF").val();
-            otherVal = $(".Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
+            var newVal = $("select.Fremdsprache.APF").val();
+            var otherVal = $("select.Fremdsprache.APF").find("option[value!=" + newVal + "]").val();
+            console.log(newVal);
             $("input.Fremdsprache[type=hidden]").not(".APF").val(otherVal);
             $("input.Fremdsprache.APF[type=hidden]").val(newVal);
         }else{

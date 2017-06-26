@@ -96,8 +96,7 @@
     function loadEASubjects($EAF){
         foreach($EAF as $EASubject){
             $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "easubj[]", "value" => $EASubject), "");
-            $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 4), "");
-            echo $HiddenLabel . $HiddenAmountField;
+            echo $HiddenLabel;
         }
     }
     /*Lädt die auswahl der Prüfungsfächer, wo man die Mündliche Prüfung ankreutzt.
@@ -234,7 +233,7 @@
         $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
         echo $HiddenLabel . $HiddenAmountField;
         $HiddenLabel = getHTMLObject("input", array("type" => "hidden", "name" => "subj[]", "value" => $lang, "class" => "Fremdsprache APF"), "");
-        $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 2), "");
+        $HiddenAmountField = getHTMLObject("input", array("type" => "hidden", "name" => "subjamount[]", "value" => 4), "");
         echo $HiddenLabel . $HiddenAmountField;
     }
 
