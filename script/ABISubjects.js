@@ -117,19 +117,20 @@ function isReady(){//Wird ausgeführt, wenn document geladen.
     }
     
     function onChangeNawiAPF(event){
-        var value = $("select.Naturwissenschaft.APF").val();
-        if(value == "Mathe"){
-            $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
-            $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", false);
-            $("select.Fremdsprache.APF").trigger("chosen:updated");
-            updateNaWiSubjects();
-        }else{
-            $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
-            $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", true).removeAttr('selected');
-            $("select.Fremdsprache.APF").trigger("chosen:updated");
-            updateNaWiSubjects();
+        if($("select.Naturwissenschaft.APF").length != 0){
+            var value = $("select.Naturwissenschaft.APF").val();
+            if(value == "Mathe"){
+                $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
+                $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", false);
+                $("select.Fremdsprache.APF").trigger("chosen:updated");
+                updateNaWiSubjects();
+            }else{
+                $("select.Fremdsprache.APF").find("option[value=Englisch]").show().removeAttr('selected').prop('selected', true);
+                $("select.Fremdsprache.APF").find("option[value!=Englisch]").prop("disabled", true).removeAttr('selected');
+                $("select.Fremdsprache.APF").trigger("chosen:updated");
+                updateNaWiSubjects();
+            }
         }
-        
     }
 
     function getSubjectCountSum(){//Zählt die anzahl der Wahlnoten zusammen. Max sind 3
