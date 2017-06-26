@@ -2,16 +2,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-/*Variables*/
-:root{
-    --primary: #3949ab;
-    --primaryLight: #6f74dd;
-    --primaryDark: #00227b;
-    --secondary: #455a64;
-    --secondaryLight: #718792;
-    --secondaryDark: #1c313a;
-}
-
 /*General*/
 body{
 	background-color: #fafafa;
@@ -91,7 +81,7 @@ select:focus{
     content: "\25BC";
 }
 select:hover{
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid #3949ab;
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -109,16 +99,16 @@ input[type="checkbox"]{
     transition: 0.2s ease-out;
 }
 input[type="checkbox"]:checked{
-    background-color: var(--primary);
-    border: 2px solid var(--primary);
+    background-color: #3949ab;
+    border: 2px solid #3949ab;
     border-radius: 2px;
 }
 input[type="checkbox"]:hover{
-    border: 2px solid var(--primaryLight);
+    border: 2px solid #6f74dd;
     border-radius: 2px;
 }
 input[type="checkbox"]:checked:hover{
-    border: 2px solid var(--primary);
+    border: 2px solid #3949ab;
     border-radius: 2px;
 }
 	input[type="checkbox"]:checked:after{
@@ -143,14 +133,14 @@ input[type="number"]{
     min-width: 112px;
 }
 input[type="number"]:not(:disabled):focus{
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid #3949ab;
     border-left: 0;
     border-right: 0;
     border-top: 0;
     content: "\25BC";
 }
 input[type="number"]:not(:disabled):hover{
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid #3949ab;
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -192,14 +182,14 @@ td input{
 }
 
 .eaLabel{
-    color: var(--primaryLight)
+    color: #6f74dd;
 }
 
 /*Button Styles*/
 button, input[type=submit]{
     letter-spacing: 0.5px;
     font-size: 0.9rem;
-    background-color: var(--secondary);
+    background-color: #455a64;
     color: white;
     text-align: center;
     border: none;
@@ -215,12 +205,12 @@ button, input[type=submit]{
 }
 button:hover, input[type=submit]:hover{
     cursor: pointer;
-    background-color: var(--secondaryLight);
+    background-color: #718792;
     transition: .3s ease-out;
 }
 button:active, input[type=submit]:active{
     cursor: pointer;
-    background-color: var(--secondaryDark);
+    background-color: #1c313a;
     transition: .3s ease-out;
     box-shadow: 0 4px 4px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
 }
@@ -234,7 +224,7 @@ nav{
     width: 100%;
     display: block;
     box-sizing: inherit;
-    background-color: var(--primary);
+    background-color: #3949ab;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 2px 6px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
     margin-left: 0px;
     z-index: 3;
@@ -304,7 +294,7 @@ nav{
     display: block;
     height: auto;
     margin: 0 5px 0 5px;
-    background-color: var(--secondary);
+    background-color: #455a64;
     position: relative;
     border-radius: 3px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
