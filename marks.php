@@ -6,10 +6,10 @@
 			if(!isset($_POST['absch'])){//Wenn die Seite geladen wird, ohne dass $_POST['absch'] gesetzt ist, weiterleitung auf index.php
 				redirect("index.php");
 			}
-            //Zwinge den Browser die Seite nicht in den Cache zu laden, um Fehler zu vermeiden.
+            /*//Zwinge den Browser die Seite nicht in den Cache zu laden, um Fehler zu vermeiden.
             header("Cache-Control: no-cache, no-store, must-revalidate");
             header("Pragma: no-cache");
-            header("Expires: 0");
+            header("Expires: 0");*/
             //Der titel der seite wird auf Abschluss + Rechner - Seite gesetzt
 			echo $_POST['absch'] . " Rechner - Noteneingabe";
 			?>
