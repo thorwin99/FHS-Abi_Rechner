@@ -105,16 +105,16 @@
                         foreach($_POST['emarks'] as $emark){
                             $SUMEMarks += $emark;
                             if($emark < 5){//Wenn Unterkurs
-                                if($emark == 0)$SUMNull++;//Wenn 0
                                 $CountUn++;
+                                if($emark == 0)$SUMNull++;//Wenn 0
                             }
                         }
-                        //Summe der e.A. Noten bilden.
+                        //Summe der Noten bilden.
                         foreach($_POST['marks'] as $mark){
                             $SUMMarks += $mark;
-                            if($emark < 5){//Wenn Unterkurs
-                                if($emark == 0)$SUMNull++;//Wenn 0
+                            if($mark < 5){//Wenn Unterkurs
                                 $CountUn++;
+                                if($mark == 0)$SUMNull++;//Wenn 0
                             }
                         }
                         //Summe der Prüfungsfächer bilden
